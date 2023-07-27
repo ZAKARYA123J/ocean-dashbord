@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
+import { NextThemeProvider } from "./providers";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -15,8 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={urbanist.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={urbanist.className}>
+        <NextThemeProvider>{children}</NextThemeProvider>
+      </body>
     </html>
   );
 }

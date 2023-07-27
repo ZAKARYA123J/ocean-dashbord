@@ -23,7 +23,7 @@ export function DashboardSidebar() {
     { routeName: "Logs", path: "/logs", icon: <GoLog /> },
   ];
   return (
-    <aside className="tw-fixed tw-bg-slate-100 tw-border-r tw-font-semibold tw-w-52 tw-h-full tw-hidden md:tw-block tw-text-lg tw-text-slate-500">
+    <aside className="tw-fixed tw-bg-slate-100 dark:tw-bg-slate-950 tw-border-r dark:tw-border-r-slate-600 tw-font-semibold tw-w-52 tw-h-full tw-hidden md:tw-block tw-text-lg tw-text-slate-500">
       <div className="tw-flex tw-flex-col tw-gap-6 tw-my-4">
         {routes.map((val) => {
           return (
@@ -32,7 +32,7 @@ export function DashboardSidebar() {
                 data-state={
                   pathPrefix + val.path === currentPath ? "active" : ""
                 }
-                className="tw-flex tw-gap-6 tw-items-center tw-px-4 tw-mx-4 data-[state=active]:tw-bg-slate-300 data-[state=active]:tw-text-slate-800 data-[state=active]:tw-rounded-lg data-[state=active]:tw-py-2"
+                className="tw-flex tw-gap-6 tw-items-center tw-px-4 tw-mx-4 data-[state=active]:tw-bg-slate-300 data-[state=active]:dark:tw-bg-slate-700 data-[state=active]:tw-text-slate-800 data-[state=active]:dark:tw-text-slate-200 data-[state=active]:tw-rounded-lg data-[state=active]:tw-py-2"
               >
                 {val.icon}
                 {val.routeName}
