@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   description: "Dashboard created using tailwindcss",
 };
 
-export default function RootLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -17,7 +17,7 @@ export default function RootLayout({
       <DashboardNav />
       <div>
         <DashboardSidebar />
-        <main className="sm:tw-ml-52 ">{children}</main>
+        <main className="sm:tw-ml-52">{children}</main>
       </div>
     </div>
   );
