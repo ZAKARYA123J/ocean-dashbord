@@ -28,7 +28,7 @@ export default function Home() {
         className="tw-bg-stone-100 dark:tw-bg-slate-900"
         style={{ minHeight: "calc(100vh - 3.5rem)" }}
       >
-        <div className="tw-grid tw-grid-flow-row tw-grid-cols-2 tw-gap-6 tw-p-4">
+        <div className="tw-grid tw-grid-flow-row sm:tw-grid-cols-2 tw-gap-6 tw-p-4">
           <span className="tw-col-span-full tw-max-h-60 tw-rounded-t-lg tw-bg-slate-200 tw-shadow dark:tw-bg-slate-800 ">
             <span className="tw-text-300 tw-block tw-select-none tw-p-4 tw-text-2xl dark:tw-text-slate-300">
               Users

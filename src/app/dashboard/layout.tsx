@@ -1,6 +1,6 @@
-import { DashboardNav } from "@/app/dashboard/components/dashboard_nav";
+import { DashboardNav } from "@/app/dashboard/components/navbar";
 import type { Metadata } from "next";
-import { DashboardSidebar } from "@/app/dashboard/components/dashboard_sidebar";
+import { DashboardSidebar } from "@/app/dashboard/components/sidebar";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -17,7 +17,7 @@ export default function RootLayout({
       <DashboardNav />
       <div>
         <DashboardSidebar />
-        <main className="md:tw-ml-52 ">{children}</main>
+        <main className="sm:tw-ml-52 ">{children}</main>
       </div>
     </div>
   );
