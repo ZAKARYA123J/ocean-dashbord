@@ -7,12 +7,12 @@ export const user_graph_data: Serie[] = [
   {
     id: "New Registrations",
     data: [
-      { x: "January", y: 975 },
-      { x: "Feburary", y: 811 },
+      { x: "January", y: 1000 },
+      { x: "Feburary", y: 600 },
       { x: "March", y: 853 },
-      { x: "April", y: 565 },
+      { x: "April", y: 655 },
       { x: "May", y: 874 },
-      { x: "June", y: 904 },
+      { x: "June", y: 766 },
       { x: "July", y: 920 },
       { x: "August", y: 511 },
       { x: "September", y: 419 },
@@ -26,7 +26,7 @@ export const user_graph_data: Serie[] = [
     data: [
       { x: "January", y: 701 },
       { x: "Feburary", y: 839 },
-      { x: "March", y: 51 },
+      { x: "March", y: 432 },
       { x: "April", y: 356 },
       { x: "May", y: 753 },
       { x: "June", y: 231 },
@@ -45,7 +45,7 @@ export const database_graph_data: Serie[] = [
     id: "Reads",
     data: [
       { x: "January", y: 1760 },
-      { x: "Feburary", y: 4730 },
+      { x: "Feburary", y: 4237 },
       { x: "March", y: 2931 },
       { x: "April", y: 4400 },
       { x: "May", y: 2621 },
@@ -70,8 +70,8 @@ export const database_graph_data: Serie[] = [
       { x: "July", y: 1582 },
       { x: "August", y: 2122 },
       { x: "September", y: 3413 },
-      { x: "October", y: 1951 },
-      { x: "November", y: 4652 },
+      { x: "October", y: 2154 },
+      { x: "November", y: 3800 },
       { x: "December", y: 3207 },
     ],
   },
@@ -93,256 +93,191 @@ export const storage_graph_data = [
 export const activity_graph_data: CalendarDatum[] = [
   {
     day: "2023-01-01",
-    value: 952,
+    value: 10,
   },
   {
-    day: "2023-01-06",
-    value: 49,
+    day: "2023-01-07",
+    value: 20,
   },
   {
-    day: "2023-01-10",
-    value: 172,
+    day: "2023-01-09",
+    value: 50,
   },
   {
-    day: "2023-01-17",
+    day: "2023-01-13",
+    value: 30,
+  },
+  {
+    day: "2023-01-14",
     value: 54,
   },
   {
-    day: "2023-01-22",
-    value: 478,
+    day: "2023-01-15",
+    value: 43,
   },
   {
-    day: "2023-01-31",
-    value: 631,
+    day: "2023-01-19",
+    value: 59,
+  },
+  {
+    day: "2023-01-21",
+    value: 56,
+  },
+  {
+    day: "2023-01-23",
+    value: 62,
+  },
+  {
+    day: "2023-01-26",
+    value: 39,
   },
   {
     day: "2023-02-04",
-    value: 481,
+    value: 50,
   },
   {
-    day: "2023-02-10",
-    value: 776,
+    day: "2023-02-18",
+    value: 21,
+  },
+  {
+    day: "2023-02-21",
+    value: 41,
   },
   {
     day: "2023-02-23",
-    value: 319,
+    value: 57,
   },
   {
-    day: "2023-02-24",
-    value: 326,
+    day: "2023-02-25",
+    value: 30,
+  },
+  {
+    day: "2023-02-26",
+    value: 53,
   },
   {
     day: "2023-02-28",
-    value: 988,
+    value: 33,
   },
   {
-    day: "2023-02-31",
-    value: 119,
+    day: "2023-03-02",
+    value: 99,
   },
   {
-    day: "2023-03-03",
-    value: 541,
+    day: "2023-03-07",
+    value: 60,
   },
   {
     day: "2023-03-10",
-    value: 305,
+    value: 61,
   },
   {
     day: "2023-03-17",
-    value: 931,
+    value: 11,
+  },
+  {
+    day: "2023-03-19",
+    value: 41,
   },
   {
     day: "2023-03-24",
-    value: 672,
+    value: 81,
   },
   {
     day: "2023-03-28",
-    value: 137,
+    value: 87,
   },
   {
     day: "2023-04-01",
-    value: 641,
+    value: 22,
   },
   {
     day: "2023-04-05",
-    value: 204,
+    value: 56,
   },
   {
     day: "2023-04-10",
-    value: 371,
+    value: 47,
   },
   {
     day: "2023-04-14",
-    value: 164,
+    value: 76,
   },
   {
     day: "2023-04-20",
-    value: 220,
+    value: 21,
+  },
+  {
+    day: "2023-04-24",
+    value: 37,
+  },
+  {
+    day: "2023-04-27",
+    value: 98,
   },
   {
     day: "2023-05-01",
-    value: 875,
+    value: 26,
   },
   {
     day: "2023-05-08",
-    value: 212,
+    value: 13,
   },
   {
     day: "2023-05-15",
-    value: 954,
+    value: 44,
   },
   {
     day: "2023-05-18",
-    value: 85,
+    value: 91,
   },
   {
-    day: "2023-05-30",
-    value: 71,
+    day: "2023-05-19",
+    value: 4,
+  },
+  {
+    day: "2023-05-23",
+    value: 38,
+  },
+  {
+    day: "2023-05-28",
+    value: 21,
   },
   {
     day: "2023-06-04",
-    value: 725,
+    value: 52,
   },
   {
     day: "2023-06-06",
-    value: 591,
+    value: 21,
   },
   {
-    day: "2023-06-13",
-    value: 75,
-  },
-  {
-    day: "2023-06-19",
-    value: 358,
-  },
-  {
-    day: "2023-06-25",
-    value: 717,
-  },
-  {
-    day: "2023-06-29",
-    value: 408,
-  },
-  {
-    day: "2023-07-02",
-    value: 102,
-  },
-  {
-    day: "2023-07-09",
-    value: 384,
-  },
-  {
-    day: "2023-07-15",
-    value: 878,
-  },
-  {
-    day: "2023-07-19",
-    value: 271,
-  },
-  {
-    day: "2023-07-24",
-    value: 602,
-  },
-  {
-    day: "2023-08-01",
-    value: 265,
-  },
-  {
-    day: "2023-08-04",
-    value: 180,
-  },
-  {
-    day: "2023-08-13",
-    value: 985,
-  },
-  {
-    day: "2023-08-23",
-    value: 74,
-  },
-  {
-    day: "2023-08-25",
-    value: 235,
-  },
-  {
-    day: "2023-09-04",
-    value: 374,
-  },
-  {
-    day: "2023-09-09",
-    value: 552,
-  },
-  {
-    day: "2023-09-16",
-    value: 299,
-  },
-  {
-    day: "2023-09-21",
-    value: 852,
-  },
-  {
-    day: "2023-09-29",
-    value: 972,
-  },
-  {
-    day: "2023-10-06",
-    value: 476,
-  },
-  {
-    day: "2023-10-14",
-    value: 130,
-  },
-  {
-    day: "2023-10-19",
-    value: 763,
-  },
-  {
-    day: "2023-10-24",
-    value: 364,
-  },
-  {
-    day: "2023-11-01",
-    value: 217,
-  },
-  {
-    day: "2023-11-07",
-    value: 574,
-  },
-  {
-    day: "2023-11-13",
-    value: 85,
-  },
-  {
-    day: "2023-11-19",
-    value: 297,
-  },
-  {
-    day: "2023-11-24",
-    value: 71,
-  },
-
-  {
-    day: "2023-12-03",
-    value: 252,
-  },
-  {
-    day: "2023-12-07",
-    value: 306,
-  },
-  {
-    day: "2023-12-13",
-    value: 194,
-  },
-  {
-    day: "2023-12-19",
-    value: 458,
-  },
-  {
-    day: "2023-12-23",
+    day: "2023-06-10",
     value: 70,
   },
   {
-    day: "2023-12-31",
-    value: 367,
+    day: "2023-06-13",
+    value: 35,
+  },
+  {
+    day: "2023-06-19",
+    value: 43,
+  },
+  {
+    day: "2023-06-25",
+    value: 28,
+  },
+  {
+    day: "2023-06-28",
+    value: 55,
+  },
+  {
+    day: "2023-06-30",
+    value: 61,
+  },
+  {
+    day: "2023-07-02",
+    value: 37,
   },
 ];
 
