@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  /*THESE ARE PRIMARILY FOR THE GRAPHS*/
+  :root {
+    --text-primary-light: black;
+  }
+
+  .tw-dark {
+    --text-primary-light: white;
+  }
+}

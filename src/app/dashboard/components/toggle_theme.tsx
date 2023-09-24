@@ -21,7 +21,7 @@ export function ToggleTheme() {
       <select
         id="toggle"
         value={theme}
-        className="tw-p-1 tw-rounded-md tw-bg-slate-200 dark:tw-bg-slate-800 tw-border dark:tw-border-slate-600"
+        className="tw-rounded-md tw-border tw-bg-slate-200 tw-p-1 dark:tw-border-slate-600 dark:tw-bg-slate-800"
         onChange={(e) => setTheme(e.target.value)}
       >
         <option value="system">System</option>

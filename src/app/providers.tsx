@@ -4,7 +4,11 @@ import { ThemeProvider } from "next-themes";
 
 export function NextThemeProvider({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" value={{ dark: "tw-dark" }}>
+    <ThemeProvider
+      storageKey="urbaneTheme"
+      attribute="class"
+      value={{ dark: "tw-dark" }}
+    >
       {children}
     </ThemeProvider>
   );

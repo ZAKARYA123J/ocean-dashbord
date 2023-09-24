@@ -1,3 +1,4 @@
+import { BarDatum } from "@nivo/bar";
 import { CalendarDatum } from "@nivo/calendar";
 import { Serie } from "@nivo/line";
 import { DefaultRawDatum, MayHaveLabel } from "@nivo/pie";
@@ -342,5 +343,56 @@ export const activity_graph_data: CalendarDatum[] = [
   {
     day: "2023-12-31",
     value: 367,
+  },
+];
+
+export const billing_graph_data: BarDatum[] = [
+  {
+    Month: "January",
+    billCost: 6971,
+  },
+  {
+    Month: "Feburary",
+    billCost: 7087,
+  },
+  {
+    Month: "March",
+    billCost: 3541,
+  },
+  {
+    Month: "April",
+    billCost: 5143,
+  },
+  {
+    Month: "May",
+    billCost: 455,
+  },
+  {
+    Month: "June",
+    billCost: 2596,
+  },
+  {
+    Month: "July",
+    billCost: 6195,
+  },
+  {
+    Month: "August",
+    billCost: 9447,
+  },
+  {
+    Month: "September",
+    billCost: 3363,
+  },
+  {
+    Month: "October",
+    billCost: 7214,
+  },
+  {
+    Month: "November",
+    billCost: 614,
+  },
+  {
+    Month: "December",
+    billCost: 6621,
   },
 ];
