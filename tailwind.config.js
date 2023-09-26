@@ -8,6 +8,9 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    backgroundImage: {
+      "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
+    },
     container: {
       center: true,
       padding: "2rem",
