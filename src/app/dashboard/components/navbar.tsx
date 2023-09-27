@@ -1,18 +1,18 @@
 import Image from "next/image";
-import { BiCommand, BiMenu, BiTerminal } from "react-icons/bi";
-import { FaBell, FaSearch } from "react-icons/fa";
+import {  BiMenu, BiTerminal } from "react-icons/bi";
+import { FaBell } from "react-icons/fa";
 import avatar from "public/avatar.webp";
 import { ToggleTheme } from "./toggle_theme";
 import CommandInputBox from "./command";
 
 export function DashboardNav() {
   return (
-    <nav className="tw-sticky tw-top-0 tw-z-30 tw-flex tw-max-h-14 sm:tw-justify-between tw-border-b tw-bg-slate-100 tw-p-3 tw-shadow-sm dark:tw-border-b-slate-600 dark:tw-bg-slate-950">
+    <nav className="tw-sticky tw-top-0 tw-z-30 tw-flex tw-max-h-14 sm:tw-justify-between tw-border-b tw-border-b-slate-300 tw-bg-slate-100 tw-p-3 tw-shadow-sm dark:tw-border-b-slate-600 dark:tw-bg-slate-950">
       <span className="tw-text-2xl tw-text-slate-700 dark:tw-text-slate-400 tw-self-center tw-mr-3 sm:tw-hidden tw-block">
         <BiMenu />
       </span>
       <span className="tw-inline-flex tw-select-none tw-items-center tw-gap-1 tw-text-2xl tw-text-slate-700 dark:tw-text-slate-300">
-        Urbane <BiTerminal /> <span className="tw-p-1 tw-text-[10px] tw-leading-[10px]  tw-bg-red-300/80 tw-text-red-900 tw-font-bold tw-rounded">DEV</span>
+        Urbane <BiTerminal /> <span className="tw-p-1 tw-text-[10px] tw-leading-[10px] tw-bg-red-600   tw-text-red-300 tw-font-extrabold tw-rounded">DEV</span>
       </span>
       {/*  Navitems */}
 

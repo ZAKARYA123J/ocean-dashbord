@@ -8,9 +8,6 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
-    backgroundImage: {
-      "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
-    },
     container: {
       center: true,
       padding: "2rem",
@@ -19,6 +16,12 @@ module.exports = {
       },
     },
     extend: {
+      minHeight: {
+        "full-minus-header": "calc(100vh - 3.5rem)",
+      },
+      backgroundImage: {
+        "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
