@@ -1,4 +1,5 @@
 import { Table } from "@tanstack/react-table";
+import { NextRequest } from "next/server";
 import {
   BiChevronLeft,
   BiChevronRight,
@@ -11,9 +12,10 @@ interface DataTablePaginationProps<TData> {
 }
 
 export function DataTablePagination<TData>({
-    table,
+  table,
 }: DataTablePaginationProps<TData>) {
-    return (
+  
+  return (
     <div className="tw-flex tw-items-center tw-justify-between tw-px-2">
       <div className="tw-flex-1 tw-text-sm tw-font-bold tw-text-slate-600 dark:tw-text-slate-400">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
@@ -24,9 +26,9 @@ export function DataTablePagination<TData>({
           Page {table.getState().pagination.pageIndex + 1} of{" "}
           {table.getPageCount()}
         </div>
-        <div className="tw-border-slate-400 tw-divide-slate-400 tw-bg-slate-200 dark:tw-bg-slate-800 tw-flex tw-text-2xl  tw-items-center tw-space-x-1 tw-border tw-rounded dark:tw-border-slate-600  tw-divide-x dark:tw-divide-slate-600">
+        <div className="tw-flex tw-items-center tw-space-x-1 tw-divide-x tw-divide-slate-400 tw-rounded  tw-border tw-border-slate-400 tw-text-2xl dark:tw-divide-slate-600  dark:tw-border-slate-600">
           <button
-            className="tw-hidden lg:tw-flex dark:disabled:tw-text-slate-600 disabled:tw-text-slate-400"
+            className="tw-hidden disabled:tw-text-slate-400 dark:disabled:tw-text-slate-600 lg:tw-flex"
             onClick={() => table.setPageIndex(0)}
             disabled={!table.getCanPreviousPage()}
           >
@@ -34,7 +36,7 @@ export function DataTablePagination<TData>({
             <BiChevronsLeft />
           </button>
           <button
-            className="dark:disabled:tw-text-slate-600 disabled:tw-text-slate-400"
+            className="disabled:tw-text-slate-400 dark:disabled:tw-text-slate-600"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
@@ -42,7 +44,7 @@ export function DataTablePagination<TData>({
             <BiChevronLeft />
           </button>
           <button
-          className="dark:disabled:tw-text-slate-600 disabled:tw-text-slate-400"
+            className="disabled:tw-text-slate-400 dark:disabled:tw-text-slate-600"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
@@ -50,7 +52,7 @@ export function DataTablePagination<TData>({
             <BiChevronRight />
           </button>
           <button
-            className="tw-hidden lg:tw-flex dark:disabled:tw-text-slate-600 disabled:tw-text-slate-400"
+            className="tw-hidden disabled:tw-text-slate-400 dark:disabled:tw-text-slate-600 lg:tw-flex"
             onClick={() => table.setPageIndex(table.getPageCount() - 1)}
             disabled={!table.getCanNextPage()}
           >
