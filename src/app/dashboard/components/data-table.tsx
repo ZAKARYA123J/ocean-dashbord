@@ -45,7 +45,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="tw-grid tw-gap-2 tw-overflow-x-auto tw-rounded-md tw-border tw-border-slate-300 dark:tw-border-slate-600">
+    <div className="tw-grid  tw-overflow-x-auto tw-rounded-md tw-border tw-border-slate-400 dark:tw-border-slate-600">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -91,7 +91,7 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      <div className="tw-p-2 tw-border-t dark:tw-border-t-slate-600 tw-border-t-slate-300 tw-bg-slate-200 dark:tw-bg-slate-800">
+      <div className="tw-p-2 tw-border-t dark:tw-border-t-slate-600 tw-border-t-slate-400 tw-bg-slate-200 dark:tw-bg-slate-800">
         <DataTablePagination table={table} />
       </div>
     </div>

@@ -38,6 +38,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.1.0",
     "eslint-config-prettier": "^8.9.0",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1"
