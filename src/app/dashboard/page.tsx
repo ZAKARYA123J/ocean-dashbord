@@ -24,10 +24,8 @@ import {
 export default function Home() {
   return (
     <>
-      <div
-        className="tw-bg-stone-100 dark:tw-bg-slate-900 tw-min-h-full-minus-header"
-      >
-        <div className="tw-grid tw-grid-flow-row sm:tw-grid-cols-2 tw-gap-6 tw-p-4">
+      <div className="tw-min-h-full-minus-header tw-bg-stone-100 dark:tw-bg-slate-900">
+        <div className="tw-grid tw-grid-flow-row tw-gap-6 tw-p-5 lg:tw-grid-cols-2">
           <span className="tw-col-span-full tw-max-h-60 tw-rounded-t-lg tw-bg-slate-200 tw-shadow dark:tw-bg-slate-800 ">
             <span className="tw-text-300 tw-block tw-select-none tw-p-4 tw-text-2xl dark:tw-text-slate-300">
               Users

@@ -12,22 +12,17 @@ export default function BillingGraph({ data }: { data: BarDatum[] }) {
       axisLeft={null}
       axisBottom={null}
       enableGridY={false}
-      padding={0.15}
       borderRadius={3}
       enableLabel={false}
       margin={{ left: 10, right: 10 }}
       tooltip={(val) => {
         return (
-          <div className="!tw-z-40 tw-block tw-rounded-md tw-bg-stone-200 tw-p-4 dark:tw-bg-slate-700">
+          // ! HOTFIX for nivo tooltip jitter bug - [tw-absolute tw-min-w-max -tw-translate-x-1/2 -tw-translate-y-full]
+          <div className="tw-absolute !tw-z-40 tw-block tw-min-w-max -tw-translate-x-full -tw-translate-y-full tw-rounded-md tw-bg-stone-200 tw-p-4 dark:tw-bg-slate-700">
             <span
-              className="tw-select-none tw-font-semibold"
-              style={{
-                color: "" + val.color,
-                backgroundColor: val.color,
-              }}
-            >
-              Color
-            </span>
+              className={`tw-select-none tw-px-6 tw-py-1 tw-font-semibold`}
+              style={{ backgroundColor: val.color }}
+            />
             <br />
             <span className="tw-font-semibold">{val.label}:</span>
             <span> ${val.formattedValue}</span>

@@ -1,8 +1,8 @@
 import { BarDatum } from "@nivo/bar";
 import { CalendarDatum } from "@nivo/calendar";
 import { Serie } from "@nivo/line";
-import { DefaultRawDatum, MayHaveLabel } from "@nivo/pie";
 
+// ! TODO: Try replacing some of this w/ faker in the future.
 export const user_graph_data: Serie[] = [
   {
     id: "New Registrations",

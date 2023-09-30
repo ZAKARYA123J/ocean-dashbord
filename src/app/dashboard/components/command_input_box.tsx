@@ -16,7 +16,6 @@ import { useRouter } from "next/navigation";
 
 export default function CommandInputBox() {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -31,12 +30,12 @@ export default function CommandInputBox() {
 
   return (
     <>
-      <CommandMenu open={open} setOpen={setOpen} router={router} />
+      <CommandMenu open={open} setOpen={setOpen} />
       <span
         onClick={(event) => {
           if (!open) setOpen(true);
         }}
-        className="tw-flex tw-h-full tw-rounded-lg tw-border tw-bg-slate-200 tw-p-1 tw-text-slate-600 tw-delay-75 hover:tw-bg-slate-300 dark:tw-border-slate-600 dark:tw-bg-slate-800 dark:tw-text-slate-400 hover:dark:tw-bg-slate-700"
+        className="tw-flex tw-h-full tw-p-1 tw-text-slate-600 hover:tw-text-slate-900 dark:tw-text-slate-400 hover:dark:tw-text-slate-300 lg:tw-rounded-lg lg:tw-border  lg:tw-bg-slate-200 lg:hover:tw-bg-slate-300 lg:dark:tw-border-slate-600 lg:dark:tw-bg-slate-800 lg:hover:dark:tw-bg-slate-700"
       >
         <span className="tw-my-auto tw-ml-2">
           <FaSearch />
@@ -44,10 +43,10 @@ export default function CommandInputBox() {
         <input
           readOnly
           type="search"
-          className="tw-w-44 tw-bg-inherit tw-p-2 tw-text-sm tw-outline-none"
+          className="tw-hidden tw-w-44 tw-bg-inherit tw-p-2 tw-text-sm tw-outline-none lg:tw-block"
           placeholder="Search"
         />
-        <kbd className="tw-flex tw-select-none tw-items-center tw-gap-1 tw-p-2 tw-text-sm">
+        <kbd className=" tw-hidden tw-select-none tw-items-center tw-gap-1 tw-p-2 tw-text-sm lg:tw-flex">
           <BiCommand /> K
         </kbd>
       </span>
@@ -58,12 +57,12 @@ export default function CommandInputBox() {
 export function CommandMenu({
   open,
   setOpen,
-  router,
 }: {
-  open: any;
-  setOpen: any;
-  router: any;
+  open: boolean;
+  setOpen: (value: typeof open) => void;
 }) {
+  const router = useRouter();
+
   return (
     <CommandDialog open={open} onOpenChange={setOpen}>
       <CommandInput placeholder="Type a command or search..." />

@@ -17,7 +17,7 @@ export default function DashboardLayout({
       <DashboardNav />
       <div>
         <DashboardSidebar />
-        <main className="sm:tw-ml-52">{children}</main>
+        <main className="lg:tw-ml-52">{children}</main>
       </div>
     </div>
   );

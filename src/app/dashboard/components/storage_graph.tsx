@@ -12,16 +12,12 @@ export default function StorageGraph({ data }: { data: MayHaveLabel[] }) {
       enableArcLinkLabels={false}
       tooltip={(val) => {
         return (
-          <div className="!tw-z-40 tw-block tw-rounded-md tw-bg-stone-200 tw-p-4 dark:tw-bg-slate-700">
+          // ! HOTFIX for nivo tooltip jitter bug - [tw-absolute tw-min-w-max -tw-translate-x-1/2 -tw-translate-y-full]
+          <div className="tw-absolute !tw-z-40 tw-block tw-min-w-max -tw-translate-x-1/2 -tw-translate-y-full tw-rounded-md tw-bg-stone-200 tw-p-4 dark:tw-bg-slate-700">
             <span
-              className="tw-select-none tw-font-semibold"
-              style={{
-                color: "" + val.datum.color,
-                backgroundColor: val.datum.color,
-              }}
-            >
-              Color
-            </span>
+              className={`tw-select-none tw-px-6 tw-py-1 tw-font-semibold`}
+              style={{ backgroundColor: val.datum.color }}
+            />
             <br />
             <span className="tw-font-semibold">{val.datum.label}:</span>
             <span> {val.datum.formattedValue} GB</span>

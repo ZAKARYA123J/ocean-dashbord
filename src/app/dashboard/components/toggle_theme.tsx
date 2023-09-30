@@ -1,23 +1,30 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
-export function ToggleTheme() {
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/shadcn/components/ui/select";
+
+export default function ToggleTheme() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div>
-      <select
-        id="toggle"
-        value={theme}
-        className="tw-rounded-md tw-border tw-bg-slate-200 tw-p-1 dark:tw-border-slate-600 dark:tw-bg-slate-800"
-        onChange={(e) => setTheme(e.target.value)}
-      >
-        <option value="system">System</option>
-        <option value="dark">Dark</option>
-        <option value="light">Light</option>
-      </select>
+    <div className="tw-hidden lg:tw-block">
+      <Select onValueChange={(newTheme) => setTheme(newTheme)}>
+        <SelectTrigger className="w-[180px] tw-capitalize">
+          <SelectValue placeholder={theme} />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="light">Light</SelectItem>
+          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   );
 }

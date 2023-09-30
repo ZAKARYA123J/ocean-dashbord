@@ -18,7 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/shadcn/components/ui/table";
-import { DataTablePagination } from "./data-table-pagination";
+import { DataTablePagination } from "./data_table_pagination";
 import { useState } from "react";
 
 interface DataTableProps<TData, TValue> {
@@ -44,8 +44,10 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const tableRows = table.getRowModel().rows;
+
   return (
-    <div className="tw-grid  tw-overflow-x-auto tw-rounded-md tw-border tw-border-slate-400 dark:tw-border-slate-600">
+    <div className="tw-text-jusitfy tw-grid tw-overflow-x-auto tw-rounded-md tw-border tw-border-slate-400 dark:tw-border-slate-600">
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -66,8 +68,8 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
+          {tableRows?.length ? (
+            tableRows.map((row) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
@@ -91,7 +93,7 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      <div className="tw-p-2 tw-border-t dark:tw-border-t-slate-600 tw-border-t-slate-400 tw-bg-slate-200 dark:tw-bg-slate-800">
+      <div className="tw-border-t tw-border-t-slate-400 tw-bg-slate-200 tw-p-2 dark:tw-border-t-slate-600 dark:tw-bg-slate-800">
         <DataTablePagination table={table} />
       </div>
     </div>

@@ -18,7 +18,7 @@ export default function AnalyticsOverviewGraph({ data }: { data: Serie[] }) {
       enableGridY={false}
       tooltip={(val) => {
         return (
-          <div className="!tw-z-40 tw-block tw-rounded-md tw-bg-slate-200 tw-p-3 dark:tw-bg-slate-700">
+          <div className="!tw-z-40 tw-block -tw-translate-x-1/2 tw-rounded-md tw-bg-slate-200 tw-p-3 dark:tw-bg-slate-700">
             <span
               className="tw-font-semibold"
               style={{ color: val.point.color }}
@@ -37,4 +37,3 @@ export default function AnalyticsOverviewGraph({ data }: { data: Serie[] }) {
     ></ResponsiveLine>
   );
 }
-
