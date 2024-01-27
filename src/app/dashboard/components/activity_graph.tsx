@@ -7,6 +7,8 @@ export default function ActivityGraph({ data }: { data: CalendarDatum[] }) {
   const { theme } = useTheme();
   return (
     <ResponsiveTimeRange
+    from={"2024-01-13"}
+    to={"2024-06-30"}
       data={data}
       theme={{
         text: {
@@ -17,12 +19,12 @@ export default function ActivityGraph({ data }: { data: CalendarDatum[] }) {
       daySpacing={4}
       margin={{ top: 25 }}
       colors={[
-        "#F47560",
-        "#F58370",
-        "#F69180",
-        "#F79E90",
-        "#F8ACA0",
         "#FABAB0",
+        "#F8ACA0",
+        "#F79E90",
+        "#F69180",
+        "#F58370",
+        "#F47560",
       ]}
       emptyColor={theme == "light" ? "#cbd5e1" : "#64748b"}
       dayBorderColor=""
