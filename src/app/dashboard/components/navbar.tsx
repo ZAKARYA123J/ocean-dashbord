@@ -1,13 +1,19 @@
 import Image from "next/image";
 import { BiMenu, BiTerminal } from "react-icons/bi";
-import { FaBell } from "react-icons/fa";
-import avatar from "public/avatar.webp";
+import { FaBell, FaExclamation } from "react-icons/fa";
 
-import dynamic from "next/dynamic";
 import CommandInputBox from "./command_input_box";
-
-// ! TODO: Add some kind of skeleton here
-const ToggleTheme = dynamic(() => import("./toggle_theme"), { ssr: false });
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/shadcn/components/ui/popover";
+import ToggleTheme from "./toggle_theme";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/shadcn/components/ui/avatar";
 
 export function DashboardNav() {
   return (
@@ -26,12 +32,94 @@ export function DashboardNav() {
       <div className="tw-flex tw-items-center tw-gap-3">
         <CommandInputBox />
         <ToggleTheme />
+
         <span className="tw-hidden tw-text-xl tw-text-slate-700 tw-transition-colors hover:tw-text-slate-800 dark:tw-text-slate-300 hover:dark:tw-text-slate-200 lg:tw-block ">
-          <FaBell />
+          <NotificationPopover />
         </span>
-        <Image className="tw-rounded-full" src={avatar} alt="" />
+        <ProfilePopover />
+
         <span></span>
       </div>
     </nav>
+  );
+}
+
+function NotificationPopover() {
+  return (
+    <Popover>
+      <PopoverTrigger className="tw-block">
+        <span>
+          <div>
+            <strong className="tw-relative tw-flex">
+              <span className="tw-items tw-absolute -tw-right-0.5 -tw-top-0.5 tw-flex tw-h-2.5 tw-w-2.5 tw-items-center tw-justify-center tw-rounded-full tw-bg-blue-600" />
+              <span className="tw-items tw-absolute -tw-right-0.5 -tw-top-0.5 tw-flex tw-h-2.5 tw-w-2.5 tw-animate-ping tw-items-center tw-justify-center tw-rounded-full tw-bg-blue-600" />
+              <span>
+                <FaBell />
+              </span>
+            </strong>
+          </div>
+        </span>
+      </PopoverTrigger>
+      <PopoverContent sideOffset={18} className="tw-mr-1">
+        <div className="tw-border-b tw-border-b-slate-600 tw-p-3 tw-font-bold tw-text-slate-200">
+          NOTIFICATIONS (2)
+        </div>
+        <div className="tw-grid tw-divide-y tw-divide-slate-600">
+          <NotificationItem
+            title="Subscription Renewal"
+            summary="Your subscription has been renewed till 24/03/2028."
+          />
+          <NotificationItem
+            title="New Update"
+            summary="Urbane has been updated to v0.2"
+          />
+        </div>
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+function NotificationItem({
+  title,
+  summary,
+}: {
+  title: string;
+  summary: string;
+}) {
+  return (
+    <div className="tw-grid tw-min-h-min tw-cursor-pointer tw-grid-flow-col tw-auto-rows-min tw-items-center tw-justify-around tw-gap-x-2 tw-bg-slate-900 tw-p-4 tw-text-sm hover:tw-bg-slate-800">
+      <span className="tw-row-span-2 tw-h-9 tw-w-9 tw-rounded-full tw-border tw-border-slate-600 tw-bg-slate-950 tw-p-2 tw-text-lg tw-text-slate-400">
+        <FaExclamation />
+      </span>
+      <span className="tw-font-bold">{title}</span>
+      <span className="tw-text-slate-400">{summary}</span>
+    </div>
+  );
+}
+
+function ProfilePopover() {
+  return (
+    <Popover>
+      <PopoverTrigger className="">
+        <Avatar className="!tw-h-8 !tw-w-8">
+          <AvatarFallback>SD</AvatarFallback>
+          <AvatarImage src="/avatar.png" alt="" />
+        </Avatar>
+      </PopoverTrigger>
+      <PopoverContent sideOffset={12} className="tw-mr-1">
+        <div>
+          <div className="tw-flex tw-flex-col tw-items-center tw-p-4">
+            <Avatar className="!tw-h-8 !tw-w-8">
+              <AvatarFallback>SD</AvatarFallback>
+              <AvatarImage src="/avatar.png" alt="" />
+            </Avatar>
+            <span className="tw-font-bold">SupremeDeity</span>
+            <span className="tw-text-xs tw-text-slate-400">
+              Member Since: 03/03/2023
+            </span>
+          </div>
+        </div>
+      </PopoverContent>
+    </Popover>
   );
 }

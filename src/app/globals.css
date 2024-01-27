@@ -4,10 +4,10 @@
 @layer base {
   /*THESE ARE PRIMARILY FOR THE GRAPHS*/
   :root {
-    --text-primary-light: #040404;
+    --text-graph: #64748b;
   }
 
   .tw-dark {
-    --text-primary-light: #cbd5e1;
+    --text-graph: #cbd5e1;
   }
 }

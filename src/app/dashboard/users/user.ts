@@ -8,11 +8,15 @@ export type User = {
 };
 
 // ----- Generate fake data -----
+
 function createRandomUser(): User {
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
+
   return {
     id: faker.string.uuid().slice(0, 15),
-    email: faker.internet.email(),
-    username: faker.internet.userName(),
+    email: faker.internet.email({ firstName, lastName }),
+    username: faker.internet.userName({ firstName, lastName }),
     role: faker.helpers.arrayElement(["USER", "ADMIN"]),
   };
 }

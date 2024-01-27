@@ -8,7 +8,11 @@ export default function ActivityGraph({ data }: { data: CalendarDatum[] }) {
   return (
     <ResponsiveTimeRange
       data={data}
-      theme={{ textColor: "var(--text-primary-light)" }}
+      theme={{
+        text: {
+          fill: "var(--text-graph)",
+        },
+      }}
       dayRadius={2}
       daySpacing={4}
       margin={{ top: 25 }}
