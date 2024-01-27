@@ -61,10 +61,10 @@ function NotificationPopover() {
         </span>
       </PopoverTrigger>
       <PopoverContent sideOffset={18} className="tw-mr-1">
-        <div className="tw-border-b tw-border-b-slate-600 tw-p-3 tw-font-bold tw-text-slate-200">
+        <div className="tw-border-b dark:tw-border-b-slate-600 tw-border-b-slate-400 tw-p-3 tw-font-bold tw-text-slate-800 dark:tw-text-slate-200">
           NOTIFICATIONS (2)
         </div>
-        <div className="tw-grid tw-divide-y tw-divide-slate-600">
+        <div className="tw-grid tw-divide-y dark:tw-divide-slate-600 tw-divide-slate-400">
           <NotificationItem
             title="Subscription Renewal"
             summary="Your subscription has been renewed till 24/03/2028."
@@ -87,12 +87,12 @@ function NotificationItem({
   summary: string;
 }) {
   return (
-    <div className="tw-grid tw-min-h-min tw-cursor-pointer tw-grid-flow-col tw-auto-rows-min tw-items-center tw-justify-around tw-gap-x-2 tw-bg-slate-900 tw-p-4 tw-text-sm hover:tw-bg-slate-800">
-      <span className="tw-row-span-2 tw-h-9 tw-w-9 tw-rounded-full tw-border tw-border-slate-600 tw-bg-slate-950 tw-p-2 tw-text-lg tw-text-slate-400">
+    <div className="tw-grid tw-min-h-min tw-cursor-pointer tw-grid-flow-col tw-auto-rows-min tw-items-center tw-justify-around tw-gap-x-2 tw-bg-slate-100 dark:tw-bg-slate-900 tw-p-4 tw-text-sm dark:hover:tw-bg-slate-800 hover:tw-bg-slate-200">
+      <span className="tw-row-span-2 tw-h-9 tw-w-9 tw-rounded-full tw-border tw-border-slate-300 dark:tw-border-slate-600 tw-bg-slate-50 dark:tw-bg-slate-950 tw-p-2 tw-text-lg dark:tw-text-slate-400 tw-text-slate-500">
         <FaExclamation />
       </span>
       <span className="tw-font-bold">{title}</span>
-      <span className="tw-text-slate-400">{summary}</span>
+      <span className="tw-text-slate-600 dark:tw-text-slate-400">{summary}</span>
     </div>
   );
 }
@@ -114,7 +114,7 @@ function ProfilePopover() {
               <AvatarImage src="/avatar.png" alt="" />
             </Avatar>
             <span className="tw-font-bold">SupremeDeity</span>
-            <span className="tw-text-xs tw-text-slate-400">
+            <span className="tw-text-xs tw-text-slate-800 dark:tw-text-slate-400">
               Member Since: 03/03/2023
             </span>
           </div>
