@@ -14,24 +14,41 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/shadcn/components/ui/avatar";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/shadcn/components/ui/sheet";
+import { DashboardSidebar } from "./sidebar";
 
 export function DashboardNav() {
   return (
     <nav className="tw-sticky tw-top-0 tw-z-30 tw-flex tw-max-h-14 tw-border-b tw-border-b-slate-300 tw-bg-slate-100 tw-p-3 tw-shadow-sm dark:tw-border-b-slate-600 dark:tw-bg-slate-950 lg:tw-justify-between">
       <span className="tw-mr-3 tw-block tw-self-center tw-text-2xl tw-text-slate-700 dark:tw-text-slate-400 lg:tw-hidden">
-        <BiMenu />
+        <Sheet>
+          <SheetTrigger asChild>
+            <BiMenu />
+          </SheetTrigger>
+          <SheetContent side={"left"} className="tw-w-[240px]">
+            <SheetHeader>
+              <Logo />
+            </SheetHeader>
+            <DashboardSidebar className="!tw-static tw-h-min !tw-p-0" />
+            <ToggleTheme className="" />
+          </SheetContent>
+        </Sheet>
       </span>
-      <span className="tw-inline-flex tw-grow tw-select-none tw-items-center tw-gap-1 tw-text-2xl tw-text-slate-700 dark:tw-text-slate-300">
-        Urbane <BiTerminal />{" "}
-        <span className="tw-rounded tw-bg-red-600 tw-p-1 tw-text-[10px]   tw-font-extrabold tw-leading-[10px] tw-text-red-300">
-          DEV
-        </span>
-      </span>
+      <Logo />
       {/*  Navitems */}
 
       <div className="tw-flex tw-items-center tw-gap-3">
         <CommandInputBox />
-        <ToggleTheme />
+        <ToggleTheme className="tw-hidden" />
 
         <span className="tw-hidden tw-text-xl tw-text-slate-700 tw-transition-colors hover:tw-text-slate-800 dark:tw-text-slate-300 hover:dark:tw-text-slate-200 lg:tw-block ">
           <NotificationPopover />
@@ -41,6 +58,17 @@ export function DashboardNav() {
         <span></span>
       </div>
     </nav>
+  );
+}
+
+function Logo() {
+  return (
+    <span className="tw-inline-flex tw-grow tw-select-none tw-items-center tw-gap-1 tw-text-2xl tw-text-slate-700 dark:tw-text-slate-300">
+      Urbane <BiTerminal />{" "}
+      <span className="tw-rounded tw-bg-red-600 tw-p-1 tw-text-[10px]   tw-font-extrabold tw-leading-[10px] tw-text-red-300">
+        DEV
+      </span>
+    </span>
   );
 }
 
@@ -61,10 +89,10 @@ function NotificationPopover() {
         </span>
       </PopoverTrigger>
       <PopoverContent sideOffset={18} className="tw-mr-1">
-        <div className="tw-border-b dark:tw-border-b-slate-600 tw-border-b-slate-400 tw-p-3 tw-font-bold tw-text-slate-800 dark:tw-text-slate-200">
+        <div className="tw-border-b tw-border-b-slate-400 tw-p-3 tw-font-bold tw-text-slate-800 dark:tw-border-b-slate-600 dark:tw-text-slate-200">
           NOTIFICATIONS (2)
         </div>
-        <div className="tw-grid tw-divide-y dark:tw-divide-slate-600 tw-divide-slate-400">
+        <div className="tw-grid tw-divide-y tw-divide-slate-400 dark:tw-divide-slate-600">
           <NotificationItem
             title="Subscription Renewal"
             summary="Your subscription has been renewed till 24/03/2028."
@@ -87,12 +115,14 @@ function NotificationItem({
   summary: string;
 }) {
   return (
-    <div className="tw-grid tw-min-h-min tw-cursor-pointer tw-grid-flow-col tw-auto-rows-min tw-items-center tw-justify-around tw-gap-x-2 tw-bg-slate-100 dark:tw-bg-slate-900 tw-p-4 tw-text-sm dark:hover:tw-bg-slate-800 hover:tw-bg-slate-200">
-      <span className="tw-row-span-2 tw-h-9 tw-w-9 tw-rounded-full tw-border tw-border-slate-300 dark:tw-border-slate-600 tw-bg-slate-50 dark:tw-bg-slate-950 tw-p-2 tw-text-lg dark:tw-text-slate-400 tw-text-slate-500">
+    <div className="tw-grid tw-min-h-min tw-cursor-pointer tw-grid-flow-col tw-auto-rows-min tw-items-center tw-justify-around tw-gap-x-2 tw-bg-slate-100 tw-p-4 tw-text-sm hover:tw-bg-slate-200 dark:tw-bg-slate-900 dark:hover:tw-bg-slate-800">
+      <span className="tw-row-span-2 tw-h-9 tw-w-9 tw-rounded-full tw-border tw-border-slate-300 tw-bg-slate-50 tw-p-2 tw-text-lg tw-text-slate-500 dark:tw-border-slate-600 dark:tw-bg-slate-950 dark:tw-text-slate-400">
         <FaExclamation />
       </span>
       <span className="tw-font-bold">{title}</span>
-      <span className="tw-text-slate-600 dark:tw-text-slate-400">{summary}</span>
+      <span className="tw-text-slate-600 dark:tw-text-slate-400">
+        {summary}
+      </span>
     </div>
   );
 }

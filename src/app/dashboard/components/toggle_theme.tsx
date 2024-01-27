@@ -9,10 +9,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/shadcn/components/ui/select";
-import { Monitor, MoonStar, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import { cn } from "@/shadcn/utils";
 
-export default function ToggleTheme() {
+export default function ToggleTheme({className}: {className?: string}) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -25,7 +25,7 @@ export default function ToggleTheme() {
   }
 
   return (
-    <div className="tw-hidden lg:tw-block">
+    <div className={cn(className, "lg:tw-block")}>
       <Select defaultValue={theme} onValueChange={(newTheme) => setTheme(newTheme)}>
         <SelectTrigger>
           <SelectValue/>

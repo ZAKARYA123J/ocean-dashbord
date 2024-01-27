@@ -16,7 +16,7 @@ export default function DashboardLayout({
     <div className="tw-flex tw-flex-col">
       <DashboardNav />
       <div>
-        <DashboardSidebar />
+        <DashboardSidebar className="tw-hidden"/>
         <main className="lg:tw-ml-52">{children}</main>
       </div>
     </div>

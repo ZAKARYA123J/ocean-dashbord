@@ -3,12 +3,18 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { routes } from "../consts";
+import { cn } from "@/shadcn/utils";
 
-export function DashboardSidebar() {
+export function DashboardSidebar({ className }: { className?: string }) {
   const currentPath = usePathname();
 
   return (
-    <aside className="tw-fixed tw-hidden tw-h-full tw-w-52 tw-border-r tw-border-r-slate-300 tw-bg-slate-100 tw-p-1 tw-text-lg tw-font-semibold tw-text-slate-500 dark:tw-border-r-slate-600 dark:tw-bg-slate-950 lg:tw-block">
+    <aside
+      className={cn(
+        className,
+        "tw-fixed tw-h-full tw-w-52 tw-bg-slate-100 tw-p-1 tw-text-lg tw-font-semibold tw-text-slate-500 dark:tw-border-r-slate-600 dark:tw-bg-slate-950 lg:tw-block lg:tw-border-r lg:tw-border-r-slate-300",
+      )}
+    >
       <div className="tw-my-4 tw-flex tw-flex-col tw-gap-2">
         {routes.map((val) => {
           return (
