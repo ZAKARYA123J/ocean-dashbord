@@ -47,7 +47,7 @@ export const userColumns: ColumnDef<Log>[] = [
           case "ERROR": color = "tw-bg-red-900"; break;
         }
 
-        return <span className={cn(color, "tw-p-1 tw-rounded")}>{value}</span>
+        return <span className={cn(color, "tw-p-1 tw-rounded tw-text-slate-300 tw-font-semibold")}>{value}</span>
     },
   },
   {

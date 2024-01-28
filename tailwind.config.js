@@ -17,7 +17,7 @@ module.exports = {
     },
     extend: {
       minHeight: {
-        "full-minus-header": "calc(100vh - 3.5rem)",
+        "full-minus-header": "calc(100dvh - 3.5rem)",
       },
       backgroundImage: {
         "radial-gradient": "radial-gradient(var(--tw-gradient-stops))",

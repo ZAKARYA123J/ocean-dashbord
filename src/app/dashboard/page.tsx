@@ -54,7 +54,7 @@ export default function Home() {
             <span className="tw-text-300 tw-block tw-select-none tw-p-4 tw-text-2xl dark:tw-text-slate-300">
               Activity
             </span>
-            <span className="tw-mx-2 tw-block tw-h-40 ">
+            <span className="tw-mx-2 tw-block tw-h-40">
               <ActivityGraph data={activity_graph_data} />
             </span>
           </span>
