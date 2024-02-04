@@ -1,15 +1,21 @@
 "use client";
 
 import { MayHaveLabel, ResponsivePie } from "@nivo/pie";
+import { priorityColors } from "../logs/columns";
+import { defaultGraphScheme } from "../consts";
 
-export default function StorageGraph({ data }: { data: MayHaveLabel[] }) {
+export default function PieGraph({ colorMap, valueSuffix, data }: { colorMap?: any, valueSuffix?: string, data: MayHaveLabel[] }) {
   return (
     <ResponsivePie
       data={data}
+      arcLinkLabelsTextColor={d => d.color}
+      margin={{top: 20, bottom: 20}}
       innerRadius={0.5}
       cornerRadius={6}
+      // @ts-ignore
+      colors={colorMap ? (d => priorityColors[d.label.toString()])  : {scheme: defaultGraphScheme} }
       enableArcLabels={false}
-      enableArcLinkLabels={false}
+      enableArcLinkLabels={true}
       tooltip={(val) => {
         return (
           // ! HOTFIX for nivo tooltip jitter bug - [tw-absolute tw-min-w-max -tw-translate-x-1/2 -tw-translate-y-full]
@@ -20,7 +26,7 @@ export default function StorageGraph({ data }: { data: MayHaveLabel[] }) {
             />
             <br />
             <span className="tw-font-semibold">{val.datum.label}:</span>
-            <span> {val.datum.formattedValue} GB</span>
+            <span> {val.datum.formattedValue} {valueSuffix}</span>
           </div>
         );
       }}

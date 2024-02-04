@@ -93,7 +93,7 @@ export const storage_graph_data = [
 function createActivityData(): CalendarDatum {
   const date = faker.date.between({
     from: "2024-01-13T00:00:00.000Z",
-    to: "2024-06-30T00:00:00.000Z",
+    to: "2024-12-31T00:00:00.000Z",
   });
 
   return {
@@ -110,7 +110,7 @@ function createActivityData(): CalendarDatum {
 export const activity_graph_data: CalendarDatum[] = faker.helpers.multiple(
   createActivityData,
   {
-    count: 150,
+    count: 300,
   },
 );
 
@@ -141,26 +141,6 @@ export const billing_graph_data: BarDatum[] = [
   },
   {
     Month: "July",
-    billCost: faker.number.int({ min: 100, max: 10000 }),
-  },
-  {
-    Month: "August",
-    billCost: faker.number.int({ min: 100, max: 10000 }),
-  },
-  {
-    Month: "September",
-    billCost: faker.number.int({ min: 100, max: 10000 }),
-  },
-  {
-    Month: "October",
-    billCost: faker.number.int({ min: 100, max: 10000 }),
-  },
-  {
-    Month: "November",
-    billCost: faker.number.int({ min: 100, max: 10000 }),
-  },
-  {
-    Month: "December",
     billCost: faker.number.int({ min: 100, max: 10000 }),
   },
 ];

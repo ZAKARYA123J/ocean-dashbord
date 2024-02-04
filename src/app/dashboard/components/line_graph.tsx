@@ -1,14 +1,16 @@
 "use client";
 
 import { ResponsiveLine, Serie } from "@nivo/line";
+import { defaultGraphScheme } from "../consts";
 
-export default function AnalyticsOverviewGraph({ data }: { data: Serie[] }) {
+export default function LineGraph({ data }: { data: Serie[] }) {
   return (
     <ResponsiveLine
       curve="natural"
+      colors={{scheme: defaultGraphScheme }}
       data={data}
       enableArea={true}
-      margin={{ top: 15 }}
+      margin={{ top: 20 }}
       pointSize={5}
       areaOpacity={0.15}
       enableCrosshair={false}

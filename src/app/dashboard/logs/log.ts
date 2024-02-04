@@ -1,8 +1,15 @@
 import { faker } from "@faker-js/faker";
 
+export const LogPriorities = <const>[
+  "VERBOSE",
+  "INFO",
+  "DEBUG",
+  "WARNING",
+  "ERROR",
+];
 export type Log = {
   time: Date;
-  priority: "VERBOSE" | "INFO" | "DEBUG" | "WARNING" | "ERROR";
+  priority: (typeof LogPriorities)[number];
   message: String;
   source: "NODE" | "API";
 };
@@ -10,13 +17,7 @@ export type Log = {
 function createRandomLog(): Log {
   return {
     time: faker.date.recent(),
-    priority: faker.helpers.arrayElement([
-      "VERBOSE",
-      "INFO",
-      "DEBUG",
-      "WARNING",
-      "ERROR",
-    ]),
+    priority: faker.helpers.arrayElement(LogPriorities),
     message: faker.lorem.sentence(),
     source: faker.helpers.arrayElement(["NODE", "API"]),
   };

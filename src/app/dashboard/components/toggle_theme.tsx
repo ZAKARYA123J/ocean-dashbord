@@ -12,7 +12,7 @@ import {
 import { useEffect, useState } from "react";
 import { cn } from "@/shadcn/utils";
 
-export default function ToggleTheme({className}: {className?: string}) {
+export default function ToggleTheme({ className }: { className?: string }) {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -21,23 +21,22 @@ export default function ToggleTheme({className}: {className?: string}) {
   }, []);
 
   if (!mounted) {
-    return <span className="tw-w-[71px]"></span>
+    return <span className="tw-w-[71px]"></span>;
   }
 
   return (
-    <div className={cn(className, "lg:tw-block")}>
-      <Select defaultValue={theme} onValueChange={(newTheme) => setTheme(newTheme)}>
+    <div className={cn("lg:tw-block", className)}>
+      <Select
+        defaultValue={theme}
+        onValueChange={(newTheme) => setTheme(newTheme)}
+      >
         <SelectTrigger>
-          <SelectValue/>
+          <SelectValue />
         </SelectTrigger>
-        <SelectContent >
+        <SelectContent>
           <SelectItem value="light">Light</SelectItem>
-          <SelectItem value="dark">
-            Dark
-          </SelectItem>
-          <SelectItem value="system">
-            System
-          </SelectItem>
+          <SelectItem value="dark">Dark</SelectItem>
+          <SelectItem value="system">System</SelectItem>
         </SelectContent>
       </Select>
     </div>

@@ -1,12 +1,14 @@
 "use client";
 
 import { BarDatum, ResponsiveBar } from "@nivo/bar";
+import { defaultGraphScheme } from "../consts";
 
-export default function BillingGraph({ data }: { data: BarDatum[] }) {
+export default function BarGraph({ data }: { data: BarDatum[] }) {
   return (
     <ResponsiveBar
       data={data}
       indexBy="Month"
+      colors={{scheme: defaultGraphScheme}}
       keys={["billCost"]}
       colorBy="indexValue"
       axisLeft={null}

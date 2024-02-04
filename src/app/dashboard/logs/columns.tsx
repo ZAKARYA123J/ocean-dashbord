@@ -3,8 +3,15 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { Log } from "./log";
 import { BiTime } from "react-icons/bi";
-import {format } from "date-fns";
-import { cn } from "@/shadcn/utils";
+import { format } from "date-fns";
+
+export const priorityColors = {
+  VERBOSE: "rgb(5 150 105)",
+  INFO: "rgb(71 85 105)",
+  DEBUG: "rgb(2 132 199)",
+  WARNING: "rgb(202 138 4)",
+  ERROR: "rgb(225 29 72)",
+};
 
 export const userColumns: ColumnDef<Log>[] = [
   {
@@ -22,8 +29,8 @@ export const userColumns: ColumnDef<Log>[] = [
     ),
     cell({ row }) {
       const value = row.getValue("time") as string;
-      const formattedTime = format(value, "Pp")
-      return <span  className="tw-font-bold">{formattedTime}</span>;
+      const formattedTime = format(value, "Pp");
+      return <span className="tw-font-bold">{formattedTime}</span>;
     },
   },
   {
@@ -36,18 +43,19 @@ export const userColumns: ColumnDef<Log>[] = [
         Priority
       </button>
     ),
-    cell({row}) {
-        const value = row.getValue("priority") as string;
-        var color: string = "";
-        switch(value) {
-          case "VERBOSE": color = "tw-bg-green-900"; break;
-          case "INFO": color = "tw-bg-slate-500"; break;
-          case "DEBUG": color = "tw-bg-sky-900"; break;
-          case "WARNING": color = "tw-bg-yellow-900"; break;
-          case "ERROR": color = "tw-bg-red-900"; break;
-        }
+    cell({ row }) {
+      const value: string = row.getValue("priority");
+      // @ts-ignore
+      var color: string = priorityColors[value];
 
-        return <span className={cn(color, "tw-p-1 tw-rounded tw-text-slate-300 tw-font-semibold")}>{value}</span>
+      return (
+        <span
+          className="tw-rounded tw-p-1 tw-font-semibold tw-text-slate-200"
+          style={{ backgroundColor: color }}
+        >
+          {value}
+        </span>
+      );
     },
   },
   {

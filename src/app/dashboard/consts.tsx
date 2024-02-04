@@ -5,6 +5,7 @@ import { BsPlugin } from "react-icons/bs";
 import { IoCloud, IoSettingsOutline } from "react-icons/io5";
 import { FaRegUser } from "react-icons/fa";
 
+
 export const routes = [
   { routeName: "Analytics", path: "/dashboard", icon: <ImStatsDots /> },
   { routeName: "Users", path: "/dashboard/users", icon: <FaRegUser /> },
@@ -22,3 +23,5 @@ export const routes = [
   },
   { routeName: "Logs", path: "/dashboard/logs", icon: <GoLog /> },
 ];
+
+export const defaultGraphScheme = "paired";
