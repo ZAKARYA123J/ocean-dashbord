@@ -38,7 +38,7 @@ export function DashboardNav() {
             <SheetHeader>
               <Logo />
             </SheetHeader>
-            <DashboardSidebar className="!tw-static tw-h-min !tw-p-0" />
+            <DashboardSidebar className="!tw-static tw-h-min tw-rounded tw-my-4 !tw-bg-inherit" />
             <ToggleTheme className="" />
           </SheetContent>
         </Sheet>
