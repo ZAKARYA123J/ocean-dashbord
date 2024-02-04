@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { BiMenu, BiTerminal } from "react-icons/bi";
 import { FaBell, FaExclamation } from "react-icons/fa";
 
@@ -16,12 +15,8 @@ import {
 } from "@/shadcn/components/ui/avatar";
 import {
   Sheet,
-  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/shadcn/components/ui/sheet";
 import { DashboardSidebar } from "./sidebar";
