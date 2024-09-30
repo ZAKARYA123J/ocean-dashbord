@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={urbanist.className}>
-      <body>
+      <body className="tw-bg-stone-100 dark:tw-bg-slate-900">
         <NextThemeProvider>{children}</NextThemeProvider>
       </body>
     </html>
