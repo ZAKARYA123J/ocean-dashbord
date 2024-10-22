@@ -61,7 +61,7 @@ function Logo() {
     <span className="tw-inline-flex tw-grow tw-select-none tw-items-center tw-gap-1 tw-text-2xl tw-text-slate-700 dark:tw-text-slate-300">
       Ocean Connecting <BiTerminal />{" "}
       <span className="tw-rounded tw-bg-red-600 tw-p-1 tw-text-[10px]   tw-font-extrabold tw-leading-[10px] tw-text-red-300">
-        DEV
+        DEV TEAM
       </span>
     </span>
   );
