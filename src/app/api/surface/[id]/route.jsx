@@ -25,7 +25,7 @@ export async function GET(req, { params }) {
       console.error('Error fetching Surface:', error);
       return NextResponse.json({ error: 'Failed to fetch Surface', details: error.message }, { status: 500 });
     }
-  }
+}
 
 export async function PUT(req) {
   try {

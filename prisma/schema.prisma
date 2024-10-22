@@ -17,7 +17,7 @@ model Devis {
   codePostall      Int
   message          String
   etage            String
-  surfaceId        Int?           // Updated to Int to reference Surface's id
+  surfaceId        Int?           
   surface          Surface?       @relation(fields: [surfaceId], references: [id], onDelete: SetNull) // Handle relation
   status           Status
   Facture          facture?
@@ -38,6 +38,14 @@ model Surface {
   id        Int       @id @default(autoincrement())
   valeur    String 
   Devis     Devis[]   // One-to-many relation: One surface can have multiple Devis entries
+}
+
+model User {
+  id       Int     @id @default(autoincrement())
+  email    String  @unique
+  password String
+  phone    String?
+  name     String
 }
 
 enum Status {
