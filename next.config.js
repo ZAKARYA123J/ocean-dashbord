@@ -7,7 +7,7 @@ const nextConfig = {
         destination: "/dashboard",
         permanent: false,
       },
-    ];
+    ];  
   },
   images: {
     remotePatterns: [

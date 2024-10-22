@@ -19,8 +19,7 @@ export const userColumns: ColumnDef<Log>[] = [
     header: ({ column }) => (
       <button
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        className="tw-inline-flex tw-items-center tw-gap-2"
-      >
+        className="tw-inline-flex tw-items-center tw-gap-2">
         <span className="tw-text-slate-500">
           <BiTime />
         </span>
