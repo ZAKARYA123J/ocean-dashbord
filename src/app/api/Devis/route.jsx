@@ -3,13 +3,15 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+// POST: Create a new Devis
 export async function POST(req) {
   try {
     const {
       nameEntreprise,
       namePersone,
       email,
-      VotreFonction,
+      phone, 
+      ville, 
       Adress,
       codePostall,
       message,
@@ -20,12 +22,15 @@ export async function POST(req) {
     if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status) {
       return NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 });
     }
+
+   
     const newDevis = await prisma.devis.create({
       data: {
         nameEntreprise,
         namePersone,
         email,
-        VotreFonction,
+        phone, 
+        ville, 
         Adress,
         codePostall,
         message,
@@ -42,6 +47,7 @@ export async function POST(req) {
   }
 }
 
+// GET: Fetch all Devis
 export async function GET() {
   try {
     const devis = await prisma.devis.findMany({

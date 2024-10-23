@@ -19,7 +19,6 @@ export async function POST(req) {
         DevisId,
       },
     });
-
     return NextResponse.json(newFacture, { status: 201 });
   } catch (error) {
     console.error('Error creating facture:', error);

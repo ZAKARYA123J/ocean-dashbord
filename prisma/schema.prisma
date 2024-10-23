@@ -12,7 +12,8 @@ model Devis {
   nameEntreprise   String?
   namePersone      String
   email            String
-  VotreFonction    String?
+  phone            String?
+  ville            String?
   Adress           String
   codePostall      Int
   message          String

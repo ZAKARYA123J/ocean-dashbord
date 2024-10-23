@@ -10,6 +10,7 @@ export async function GET(req, { params }) {
     if (!id) {
       return NextResponse.json({ error: 'Devis ID is required' }, { status: 400 });
     }
+
     const devis = await prisma.devis.findUnique({
       where: { id: Number(id) },
       include: {
@@ -29,15 +30,16 @@ export async function GET(req, { params }) {
   }
 }
 
-export async function PUT(req) {
+export async function PUT(req, { params }) {
   try {
+    const { id } = params; 
     const {
-      id, 
       nameEntreprise,
       namePersone,
       email,
-      VotreFonction,
+      phone,           
       Adress,
+      ville,           
       codePostall,
       message,
       etage,
@@ -55,8 +57,9 @@ export async function PUT(req) {
         nameEntreprise,
         namePersone,
         email,
-        VotreFonction,
+        phone,          
         Adress,
+        ville,            
         codePostall,
         message,
         etage,
@@ -72,10 +75,9 @@ export async function PUT(req) {
   }
 }
 
-export async function DELETE(req) {
+export async function DELETE(req, { params }) {
   try {
-    const { id } = await req.json(); 
-
+    const { id } = params; 
     if (!id) {
       return NextResponse.json({ error: 'Devis ID is required' }, { status: 400 });
     }
