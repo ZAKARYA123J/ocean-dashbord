@@ -8,20 +8,21 @@ import { FaRegUser } from "react-icons/fa";
 export const routes = [
   { routeName: "Analytics", path: "/dashboard", icon: <ImStatsDots /> },
   { routeName: "Users", path: "/dashboard/users", icon: <FaRegUser /> },
+  
   {
-    routeName: "Integrations",
+    routeName: "Devis",
     path: "/dashboard/integrations",
     icon: <BsPlugin />,
   },
   { routeName: "Logs", path: "/dashboard/logs", icon: <GoLog /> },
-  { routeName: "Database", path: "/dashboard/database", icon: <CgDatabase /> },
+  { routeName: "Factures", path: "/dashboard/facture", icon: <CgDatabase /> },
   { routeName: "Storage", path: "/dashboard/storage", icon: <IoCloud /> },
 
-  {
-    routeName: "Settings",
-    icon: <IoSettingsOutline />,
-    path: "/dashboard/settings",
-  },
+  // {
+  //   routeName: "Settings",
+  //   icon: <IoSettingsOutline />,
+  //   path: "/dashboard/settings",
+  // },
 ];
 
 export const defaultGraphScheme = "paired";

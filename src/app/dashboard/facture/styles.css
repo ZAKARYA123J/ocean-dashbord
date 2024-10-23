@@ -1,0 +1,123 @@
+/* styles.css */
+
+/* Importing Radix UI Colors */
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--mauve-1); /* Light background */
+}
+
+.form-container {
+    max-width: 500px; /* Set a max width for the form */
+    margin: 50px auto; /* Center the form horizontally */
+    padding: 60px; /* Add some padding */
+    background-color: var(--mauve-3); /* Light mauve background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px var(--black-alpha-5); /* Subtle shadow */
+}
+
+.form-title {
+    text-align: center; /* Center the title */
+    color: var(--violet-11); /* Dark violet text */
+    margin-bottom: 20px; /* Space below title */
+}
+
+.insert-form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form groups */
+}
+
+label {
+    font-weight: bold; /* Bold labels for emphasis */
+}
+.form-input {
+    width: 100%; /* Full width inputs */
+    padding: 10px; /* Inner padding for inputs */
+    margin-top: 5px; /* Space above inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    border: 1px solid var(--black-alpha-8); /* Border color */
+}
+
+.submit-button {
+    background-color: var(--green-6); /* Button color */
+    color: var(--mauve-1); /* Button text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Rounded corners for button */
+    padding: 10px; /* Inner padding for button */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.submit-button:hover {
+    background-color: var(--green-7); /* Darker green on hover */
+}
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensures it's above other content */
+}
+
+.dialog-content {
+    background-color: var(--mauve-3);
+    border-radius: 8px;
+    padding: 0 20px 20px 20px; 
+    
+    max-width: 500px;
+   
+    position: fixed; /* Ensures it stays in place on scroll */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Perfect centering */
+    max-height: 80vh; /* Ensures it doesn't take up the whole screen */
+    overflow-y: auto; /* Allows scrolling inside if the content overflows */
+    z-index: 1001; /* Above the overlay */
+}
+
+.open-dialog-button {
+    background-color: var(--violet-6); /* Violet background */
+    color: var(--mauve-1); /* Light text color */
+    border: none; /* Remove default border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 10px 20px; /* Padding for button size */
+    font-size: 16px; /* Font size for button text */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin: 15px;
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center items */
+
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+}
+
+.open-dialog-button:hover {
+    background-color: var(--violet-7); /* Darker violet on hover */
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+.dialog-title {
+    font-size: 24px;
+}
+
+.dialog-close {
+    background-color: red; /* Changed background color to red */
+    color: aliceblue;
+    width: 30%;
+    border-radius: 3px;
+}
+

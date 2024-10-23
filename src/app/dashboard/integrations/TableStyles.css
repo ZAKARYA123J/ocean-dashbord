@@ -1,0 +1,60 @@
+/* TableStyles.css */
+
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid var(--mauve-6);
+}
+
+.table thead {
+  background-color: var(--violet-5);
+  color: var(--mauve-12);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--black-alpha-3);
+}
+
+.table tbody tr:hover {
+  background-color: var(--green-4);
+  color: white;
+}
+
+/* Button Styles */
+.button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 1px;
+}
+
+.button-update {
+  background-color: var(--violet-6);
+  color: white;
+}
+
+.button-update:hover {
+  background-color: var(--violet-7);
+}
+
+.button-delete {
+  background-color: red;
+  color: white;
+}
+
+.button-delete:hover {
+  background-color: darkred;
+}

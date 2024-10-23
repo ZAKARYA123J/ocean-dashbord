@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/surface/route.jsx", "src/app/api/Devis/route.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/surface/route.jsx", "src/app/api/Devis/route.jsx", "src/app/dashboard/integrations/columns.tsx"],
   "exclude": ["node_modules"]
 }

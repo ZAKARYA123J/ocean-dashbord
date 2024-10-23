@@ -31,7 +31,7 @@ export function DashboardNav() {
           </SheetTrigger>
           <SheetContent side={"left"} className="tw-w-[240px]">
             <SheetHeader>
-              <Logo />
+              <Logo/>
             </SheetHeader>
             <DashboardSidebar className="!tw-static tw-h-min tw-rounded tw-my-4 !tw-bg-inherit" />
             <ToggleTheme className="" />
