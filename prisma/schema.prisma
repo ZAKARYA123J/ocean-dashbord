@@ -40,8 +40,8 @@ model Surface {
 }
 
 enum Status {
-    
+  PENDING
   CONFIRMED
   REJECTED
-  COMPLETED
+  COMPLETED
 }

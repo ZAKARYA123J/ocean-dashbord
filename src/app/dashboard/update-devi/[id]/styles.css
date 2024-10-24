@@ -1,0 +1,84 @@
+/* Import Radix UI Colors */
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/green.css";
+@import "@radix-ui/colors/mauve.css";
+@import "@radix-ui/colors/violet.css";
+
+/* Container styles */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background-color: var(--mauve-2); /* Light background for contrast */
+}
+
+/* Heading styles */
+.h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--violet-9); /* Use a darker violet for text */
+}
+
+/* Form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Input styles */
+.input, .textarea {
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--black-alpha-6); /* Border color */
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--black-alpha-12); /* Darker text */
+  border: black 1px solid;
+}
+
+/* Input focus styles */
+.input:focus, .textarea:focus {
+  border-color: var(--green-7); /* Green border on focus */
+  outline: none;
+}
+
+/* Button styles */
+.button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--green-9); /* Green button */
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover styles */
+.button:hover {
+  background-color: var(--green-8); /* Darker green on hover */
+}
+
+/* Textarea styles */
+.textarea {
+  resize: none; /* Disable resizing */
+  min-height: 100px; /* Set a minimum height */
+}
+/* Input group styles for horizontal layout */
+.input-group {
+  display: flex;
+  justify-content: space-between; /* Space inputs evenly */
+  margin-bottom: 1rem; /* Spacing below the group */
+}
+
+.input-group .input {
+  flex: 1; /* Allow inputs to take equal space */
+  margin-right: 1rem; /* Space between the inputs */
+}
+
+/* Remove margin from the last input in the group */
+.input-group .input:last-child {
+  margin-right: 0; /* No margin for the last input */
+}

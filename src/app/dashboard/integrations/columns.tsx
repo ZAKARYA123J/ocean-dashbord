@@ -4,6 +4,9 @@ import './TableStyles.css'; // Import the CSS file
 import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 
 import { useRouter } from 'next/navigation';
+interface Surface {
+  valeur: string; // Adjust the type as necessary
+}
 interface DataItem {
   id: string; // Assuming each item has a unique ID
   nameEntreprise: string;
@@ -16,7 +19,7 @@ interface DataItem {
   etage: string;
   surfaceId: string; 
   valeur:string;
-  surface:string;
+  surface:Surface;
   status: string;  
 }
 
@@ -51,7 +54,7 @@ const Columns: React.FC = () => {
   };
   const router = useRouter(); // Initialize the useRouter hook
   const handleUpdate = (id: string) => {
-    router.push(`/update-devi/${id}`); // Redirect to the Update page with the selected ID
+    router.push(`/dashboard/update-devi/${id}`); // Redirect to the Update page with the selected ID
   };
 
   return (
