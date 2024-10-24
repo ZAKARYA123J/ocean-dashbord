@@ -132,17 +132,18 @@ const Insert: React.FC = () => {
                 />
               </fieldset>
 
-              <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
-                <label className="Label" htmlFor="email">Email</label>
-                <input
-                  className="Input"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required // Make required if necessary
-                />
-              </fieldset>
+              <fieldset className="Fieldset" style={{ flex: "1 1 100%" }}>
+  <label className="Label" htmlFor="email">Email</label>
+  <input
+    className="Input"
+    id="email"
+    name="email"
+    value={formData.email}
+    onChange={handleChange}
+    required // Make required if necessary
+  />
+</fieldset>
+
 
               <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
                 <label className="Label" htmlFor="VotreFonction">Function</label>
@@ -200,6 +201,16 @@ const Insert: React.FC = () => {
                   onChange={handleChange}
                 />
               </fieldset>
+              <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
+                <label className="Label" htmlFor="status">Status</label>
+                <input
+                  className="Input"
+                  id="status"
+                  name="status"
+                  value={formData.status}
+                  onChange={handleChange}
+                />
+              </fieldset>
 
               <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
                 <label className="Label" htmlFor="surfaceId">Surface ID</label>
@@ -213,19 +224,9 @@ const Insert: React.FC = () => {
                 />
               </fieldset>
 
-              <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
-                <label className="Label" htmlFor="status">Status</label>
-                <input
-                  className="Input"
-                  id="status"
-                  name="status"
-                  value={formData.status}
-                  onChange={handleChange}
-                />
-              </fieldset>
-
+          
               {/* Submit button */}
-              <div style={{ display: "flex", marginTop: 25, justifyContent: "flex-end" }}>
+              <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 <button type="submit" className="Button green">
                   Save 
                 </button>

@@ -38,9 +38,7 @@ export function DashboardNav() {
           </SheetContent>
         </Sheet>
       </span>
-      <Logo />
-      {/*  Navitems */}
-
+      <Logo/>
       <div className="tw-flex tw-items-center tw-gap-3">
         <CommandInputBox />
         <ToggleTheme className="tw-hidden" />

@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import './TableStyles.css'; // Import the CSS file
 import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
-import Update from './update'; // Import the Update modal
+
+import { useRouter } from 'next/navigation';
 interface DataItem {
   id: string; // Assuming each item has a unique ID
   nameEntreprise: string;
@@ -42,15 +43,17 @@ const Columns: React.FC = () => {
     setData(data.filter(item => item.id !== id));
   };
 
-  const handleUpdate = (id: string) => {
-    setSelectedId(id); // Set the selected ID
-    setIsModalOpen(true); // Open the modal
-  };
+  
 
   const closeModal = () => {
     setIsModalOpen(false); // Close the modal
     setSelectedId(null); // Reset the selected ID
   };
+  const router = useRouter(); // Initialize the useRouter hook
+  const handleUpdate = (id: string) => {
+    router.push(`/update-devi/${id}`); // Redirect to the Update page with the selected ID
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -94,9 +97,7 @@ const Columns: React.FC = () => {
           ))}
         </tbody>
       </table>
-      {isModalOpen && (
-        <Update id={selectedId} onClose={closeModal} />
-      )}
+   
     </div>
   );
 };

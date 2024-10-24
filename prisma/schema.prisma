@@ -22,7 +22,6 @@ model Devis {
   status           Status?
   Facture          facture?
 }
-
 model facture {
   id            Int       @id @default(autoincrement())
   dateReaserver DateTime
