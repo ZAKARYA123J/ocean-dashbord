@@ -7,16 +7,16 @@ import Columns from './columns';
 function Page() {
     return (
       <>
+      
         <div>
             <Dialog.Root>
                 <Dialog.Trigger asChild>
-                    <button className="open-dialog-button">Insert Facture<PlusIcon/></button>
+                    <button className="Button violet" style={{marginLeft:"110px"}}>Insert Facture<PlusIcon/></button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className="dialog-overlay" />
                     <Dialog.Content className="dialog-content">
-                        <Dialog.Title className="dialog-title">Insert Data</Dialog.Title>
-                        <Insert />
+                        <Insert/>
                         <Dialog.Close className="dialog-close">Close ✖</Dialog.Close> {/* Use an "X" symbol */}
                     </Dialog.Content>
                 </Dialog.Portal>

@@ -12,7 +12,7 @@ const Update: React.FC<UpdateProps> = ({ id, onClose }) => {
   useEffect(() => {
     if (id) {
       const fetchItemData = async () => {
-        const response = await fetch(`http://localhost:3000/api/Devis/${id}`);
+        const response = await fetch(`/api/Devis/${id}`);
         const result = await response.json();
         setItemData(result);
       };

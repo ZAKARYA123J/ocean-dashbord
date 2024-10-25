@@ -1,57 +1,38 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import './TableStyles.css'; // Import the CSS file
 import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
-
+import { DataContext } from '@/app/contexts/post';
 import { useRouter } from 'next/navigation';
-interface Surface {
-  valeur: string; // Adjust the type as necessary
-}
-interface DataItem {
-  id: string; // Assuming each item has a unique ID
-  nameEntreprise: string;
-  namePersone: string;
-  email: string;
-  VotreFonction: string;
-  Adress: string;
-  codePostall: string;
-  message: string;
-  etage: string;
-  surfaceId: string; 
-  valeur:string;
-  surface:Surface;
-  status: string;  
-}
+
 
 const Columns: React.FC = () => {
-  const [data, setData] = useState<DataItem[]>([]);
+  
   const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('http://localhost:3000/api/Devis');
-      const result: DataItem[] = await response.json();
-      setData(result);
-    };
+  const { devis, loading, error,refetchDevis} = useContext(DataContext);
 
-    fetchData();
-  }, []);
 
   const handleDelete = async (id: string) => {
     // Implement your delete logic here
-    await fetch(`http://localhost:3000/api/Devis/${id}`, {
+    try{
+       await fetch(`/api/Devis/${id}`, {
       method: 'DELETE',
+      
     });
+    await refetchDevis()
+    }catch{
+      console.log('eror')
+    }
+   
+    
     // Update the state to remove the deleted item
-    setData(data.filter(item => item.id !== id));
+    
   };
 
   
 
-  const closeModal = () => {
-    setIsModalOpen(false); // Close the modal
-    setSelectedId(null); // Reset the selected ID
-  };
+
   const router = useRouter(); // Initialize the useRouter hook
   const handleUpdate = (id: string) => {
     router.push(`/dashboard/update-devi/${id}`); // Redirect to the Update page with the selected ID
@@ -76,7 +57,7 @@ const Columns: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
+          {devis.map((item:any) => (
             <tr key={item.id}>
               <td>{item.nameEntreprise}</td>
               <td>{item.namePersone}</td>

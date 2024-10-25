@@ -50,9 +50,9 @@ export async function PUT(req) {
   }
 }
 
-export async function DELETE(req) {
+export async function DELETE(req,{params}) {
   try {
-    const { id } = await req.json();
+    const { id } = await params;
     if (!id) {
       return NextResponse.json({ error: 'Surface ID is required' }, { status: 400 });
     }

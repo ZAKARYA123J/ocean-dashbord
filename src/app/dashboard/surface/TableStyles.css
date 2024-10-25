@@ -5,10 +5,12 @@
 @import "@radix-ui/colors/mauve.css";
 @import "@radix-ui/colors/violet.css";
 
+
 .table {
-  width: 90%;
+  width: 80%;
   border-collapse: collapse;
- 
+  margin-left: 85px;
+
 }
 
 .table th,
@@ -27,7 +29,11 @@
   background-color: var(--black-alpha-3);
 }
 
-
+/* Update the hover effect for table rows */
+.table tbody tr:hover {
+  background-color: inherit; /* Keeps the original background color */
+  color: inherit; /* Keeps the original text color */
+}
 
 /* Button Styles */
 .button {
@@ -35,13 +41,12 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin: 10px;
+  margin: 1px;
 }
 
 .button-update {
   background-color: var(--violet-6);
   color: white;
- 
 }
 
 .button-update:hover {

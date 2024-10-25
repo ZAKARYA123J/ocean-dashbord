@@ -51,7 +51,7 @@ const UpdateForm = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const res = await fetch(`http://localhost:3000/api/Devis/${id}`, {
+    const res = await fetch(`/api/Devis/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)
@@ -60,7 +60,7 @@ const UpdateForm = () => {
     if (res.ok) {
       setSuccessMessage("Form updated successfully!"); // Set success message
       setTimeout(() => {
-        router.push('/dashboard/integrations'); // Redirect after a short delay
+        router.push('/dashboard/devis'); // Redirect after a short delay
       }, 2000); // Redirect after 2 seconds (2000 milliseconds)
     } else {
       console.error("Update failed");
@@ -155,7 +155,7 @@ const UpdateForm = () => {
     value={formData.message}
     onChange={handleChange}
   />
-  <button className="button" type="submit">Update</button>
+  <button className="button" type="submit" style={{backgroundColor:"violet"}}>Update</button>
 </form>
 
     </div>

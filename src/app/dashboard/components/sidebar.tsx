@@ -68,7 +68,7 @@ export function DashboardSidebar({ className }: { className?: string }) {
                       className="tw-mx-2 tw-flex tw-items-center tw-gap-6 tw-p-2 data-[state=active]:tw-rounded-lg data-[state=active]:tw-bg-slate-300  data-[state=active]:tw-text-slate-800 data-[state=active]:dark:tw-bg-slate-700 data-[state=active]:dark:tw-text-slate-200"
                     >
                       {val.icon}
-                      <span className="lg:tw-hidden">{val.routeName}</span>
+                      <span >{val.routeName}</span>
                     </span>
                   </Link>
                 </TooltipTrigger>

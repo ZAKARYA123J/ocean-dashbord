@@ -49,6 +49,7 @@
   padding: 0.75rem 1.5rem;
   border: none;
   border-radius: 4px;
+  
   color: white;
   font-size: 1rem;
   cursor: pointer;
@@ -56,7 +57,9 @@
 }
 
 /* Button hover styles */
-
+.button:hover {
+  background-color: var(--green-8); /* Darker green on hover */
+}
 
 /* Textarea styles */
 .textarea {

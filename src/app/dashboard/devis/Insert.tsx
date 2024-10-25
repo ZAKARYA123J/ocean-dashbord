@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import "./styles.css";
 import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon
-
+import { DataContext } from "@/app/contexts/post";
 // Define the shape of your form data
 interface FormData {
   nameEntreprise: string;
@@ -25,15 +25,15 @@ const Insert: React.FC = () => {
     email: "",
     VotreFonction: "",
     Adress: "",
-    codePostall: 0, 
+    codePostall: 80000, 
     message: "",
     etage: "",
     surfaceId: 0,
     status: "",
   });
-
+const {surface,refetchDevis}=useContext(DataContext)
   const [submitStatus, setSubmitStatus] = useState<string>(""); // To track submission status
-
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -53,9 +53,9 @@ const Insert: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent default form submission
-
+    setIsLoading(true); // Set loading to true on submit
     try {
-      const response = await fetch("http://localhost:3000/api/Devis", {
+      const response = await fetch("/api/Devis", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -73,12 +73,13 @@ const Insert: React.FC = () => {
           email: "",
           VotreFonction: "",
           Adress: "",
-          codePostall: 0, // Reset to initial number
+          codePostall: 80000, // Reset to initial number
           message: "",
           etage: "",
           surfaceId: 0,
           status: "",
         });
+        await refetchDevis()
       } else {
         console.error("Failed to insert devi");
         setSubmitStatus("Failed to insert devi. Please try again."); // Error message
@@ -86,6 +87,9 @@ const Insert: React.FC = () => {
     } catch (error) {
       console.error("Error inserting devi:", error);
       setSubmitStatus("Error inserting devi. Please check your network."); // Error message
+      
+    }finally{
+      setIsLoading(false); // Reset loading state
     }
   };
 
@@ -93,7 +97,7 @@ const Insert: React.FC = () => {
     <div className="tw-mt-3">
     <Dialog.Root >
       <Dialog.Trigger asChild>
-        <button className="Button violet">Insert Devi <PlusIcon/></button>
+        <button className="Button violet" style={{marginLeft:"110px"}}>Insert Devi <PlusIcon/></button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
@@ -181,7 +185,7 @@ const Insert: React.FC = () => {
               </fieldset>
 
               <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
-                <label className="Label" htmlFor="message">Message 1</label>
+                <label className="Label" htmlFor="message">Message</label>
                 <input
                   className="Input"
                   id="message"
@@ -202,34 +206,49 @@ const Insert: React.FC = () => {
                 />
               </fieldset>
               <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
-                <label className="Label" htmlFor="status">Status</label>
-                <input
-                  className="Input"
-                  id="status"
-                  name="status"
-                  value={formData.status}
-                  onChange={handleChange}
-                />
-              </fieldset>
+  <label className="Label" htmlFor="status">Status</label>
+  <select
+    className="Input"
+    id="status"
+    name="status"
+    value={formData.status}
+    onChange={handleChange}
+    required
+  >
+    <option value="">Select </option>
+    <option value="PENDING">PENDING</option>
+    <option value="CONFIRMED">CONFIRMED</option>
+    <option value="REJECTED">REJECTED</option>
+    <option value="COMPLETED">COMPLETED</option>
+  </select>
+</fieldset>
+
 
               <fieldset className="Fieldset" style={{ flex: "1 1 calc(50% - 16px)" }}>
-                <label className="Label" htmlFor="surfaceId">Surface ID</label>
-                <input
-                  className="Input"
-                  id="surfaceId"
-                  name="surfaceId"
-                  value={formData.surfaceId}
-                  onChange={handleChange}
-                  required // Make required if necessary
-                />
-              </fieldset>
+                  <label className="Label" htmlFor="surfaceId">Surface</label>
+                  <select
+                    className="Input"
+                    id="surfaceId"
+                    name="surfaceId"
+                    value={formData.surfaceId}
+                    onChange={handleChange}
+                    required
+                  >
+                    <option value={0}>Select </option>
+                    {surface.map((s: { id: number; valeur: string }) => (
+                      <option key={s.id} value={s.id}>
+                        {s.valeur}
+                      </option>
+                    ))}
+                  </select>
+                </fieldset>
 
           
               {/* Submit button */}
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <button type="submit" className="Button green">
-                  Save 
-                </button>
+              <button type="submit" className="Button green" disabled={isLoading}>
+                    {isLoading ? "Saving..." : "Save"}
+                  </button>
               </div>
             </div>
           </form>

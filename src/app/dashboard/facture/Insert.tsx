@@ -1,7 +1,7 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import './styles.css'; // Make sure to import your CSS file
-
+import { DataContext } from '@/app/contexts/post';
 interface FormData {
     dateReaserver: string;
     dateFacture: string;
@@ -16,7 +16,7 @@ function Insert() {
         price: 0,
         DevisId: 0,
     });
-
+    const {devis,refetchFacture}=useContext(DataContext)
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setFormData({
@@ -29,7 +29,7 @@ function Insert() {
         e.preventDefault();
         
         try {
-            const response = await fetch('http://localhost:3000/api/facture', {
+            const response = await fetch('/api/facture', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -42,6 +42,7 @@ function Insert() {
             }
 
             const data = await response.json();
+            await refetchFacture()
             console.log('Success:', data);
             // Optionally reset the form or show a success message here
         } catch (error) {
@@ -93,15 +94,23 @@ function Insert() {
                 </div>
                 <div className="form-group">
                     <label>
-                        Devis ID:
-                        <input
-                            type="number"
+                         Select Devis:
+                        <select
                             name="DevisId"
                             value={formData.DevisId}
                             onChange={handleChange}
                             required
                             className="form-input"
-                        />
+                        >
+                            <option value="" disabled>Select Devis</option>
+                            {devis
+                                .filter((item: { id: number, nameEntreprise: string, Facture: string }) => !item.Facture)
+                                .map((item:any) => (
+                                    <option key={item.id} value={item.id}>
+                                        {item.nameEntreprise} (ID: {item.id})
+                                    </option>
+                                ))}
+                        </select>
                     </label>
                 </div>
                 <button type="submit" className="submit-button">Insert</button>

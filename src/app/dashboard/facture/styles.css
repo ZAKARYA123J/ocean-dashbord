@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* Importing Radix UI Colors */
 @import "@radix-ui/colors/black-alpha.css";
 @import "@radix-ui/colors/green.css";
@@ -15,109 +13,161 @@
 body {
     font-family: Arial, sans-serif;
     background-color: var(--mauve-1); /* Light background */
+    color: var(--mauve-12); /* Ensures readable text */
 }
 
 .form-container {
-    max-width: 500px; /* Set a max width for the form */
-    margin: 50px auto; /* Center the form horizontally */
-    padding: 60px; /* Add some padding */
-    background-color: var(--mauve-3); /* Light mauve background */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 10px var(--black-alpha-5); /* Subtle shadow */
+    max-width: 500px; 
+    margin: 60px auto; /* Center the form with more top margin */
+    padding: 40px; 
+    background-color: var(--mauve-2); /* Slightly lighter background */
+    border-radius: 12px; /* More rounded corners */
+    box-shadow: 0 6px 15px var(--black-alpha-5); /* Enhanced shadow */
 }
 
 .form-title {
-    text-align: center; /* Center the title */
-    color: var(--violet-11); /* Dark violet text */
-    margin-bottom: 20px; /* Space below title */
+    text-align: center; 
+    font-size: 1.8rem; /* Larger font size */
+    color: var(--violet-12); /* Dark violet text */
+    margin-bottom: 25px; /* Increased space below title */
 }
 
 .insert-form {
-    display: flex; /* Use flexbox for layout */
-    flex-direction: column; /* Stack items vertically */
+    display: flex; 
+    flex-direction: column;
+    gap: 15px; /* Added gap for consistent spacing */
 }
 
 .form-group {
-    margin-bottom: 15px; /* Space between form groups */
+    display: flex;
+    flex-direction: column; /* Ensure labels stay on top */
+    gap: 8px; /* Consistent gap between label and input */
 }
 
 label {
-    font-weight: bold; /* Bold labels for emphasis */
+    font-weight: bold; 
+    font-size: 1rem; /* Slightly larger label size */
 }
+
 .form-input {
-    width: 100%; /* Full width inputs */
-    padding: 10px; /* Inner padding for inputs */
-    margin-top: 5px; /* Space above inputs */
-    border-radius: 4px; /* Rounded corners for inputs */
-    border: 1px solid var(--black-alpha-8); /* Border color */
+    width: 100%; 
+    padding: 12px; /* Slightly larger padding */
+    border-radius: 6px; /* Increased corner radius */
+    border: 1px solid black; 
+    font-size: 1rem; /* Increased input text size */
+    transition: border-color 0.3s ease; /* Smooth focus effect */
+}
+
+.form-input:focus {
+    border-color: var(--violet-7); /* Violet border on focus */
+    outline: none; /* Remove default outline */
 }
 
 .submit-button {
-    background-color: var(--green-6); /* Button color */
-    color: var(--mauve-1); /* Button text color */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Rounded corners for button */
-    padding: 10px; /* Inner padding for button */
-    cursor: pointer; /* Pointer cursor on hover */
+    background-color: var(--violet-5);
+    color: var(--mauve-1);
+    padding: 12px;
+    padding-left: 10px;
+    border-radius: 6px; 
+    font-size: 1rem; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .submit-button:hover {
-    background-color: var(--green-7); /* Darker green on hover */
+    background-color: var(--violet-8);
+    transform: scale(1.02); /* Subtle zoom effect on hover */
 }
+
 .dialog-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    z-index: 1000; /* Ensures it's above other content */
+    background-color: var(--black-a9);
+	position: fixed;
+	inset: 0;
+	animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dialog-content {
-    background-color: var(--mauve-3);
-    border-radius: 8px;
-    padding: 0 20px 20px 20px; 
-    
-    max-width: 500px;
-   
-    position: fixed; /* Ensures it stays in place on scroll */
+    background-color: var(--mauve-2); 
+    border-radius: 12px; 
+    padding: 20px 30px; /* Increased padding for better spacing */
+    max-width: 600px; 
+    max-height: 90vh; 
+    overflow-y: auto; 
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Perfect centering */
-    max-height: 80vh; /* Ensures it doesn't take up the whole screen */
-    overflow-y: auto; /* Allows scrolling inside if the content overflows */
-    z-index: 1001; /* Above the overlay */
+    transform: translate(-50%, -50%);
+    z-index: 1001; 
+    box-shadow: 0 10px 25px var(--black-alpha-5); /* More prominent shadow */
+}
+.Button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4px;
+	padding: 0 15px;
+	font-size: 15px;
+	line-height: 1;
+	font-weight: 500;
+	height: 35px;
+    margin: 10px;
+}
+.Button.violet {
+	background-color: white;
+	color: var(--violet-11);
+	box-shadow: 0 2px 10px var(--black-a7);
+}
+.Button.violet:hover {
+	background-color: var(--mauve-3);
+}
+.Button.violet:focus {
+	box-shadow: 0 0 0 2px black;
 }
 
-.open-dialog-button {
-    background-color: var(--violet-6); /* Violet background */
-    color: var(--mauve-1); /* Light text color */
-    border: none; /* Remove default border */
-    border-radius: 4px; /* Slightly rounded corners */
-    padding: 10px 20px; /* Padding for button size */
-    font-size: 16px; /* Font size for button text */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin: 15px;
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Vertically center items */
-
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+.Button.green:hover {
+	background-color: var(--green-5);
+}
+.Button.green:focus {
+	box-shadow: 0 0 0 2px var(--green-7);
 }
 
-.open-dialog-button:hover {
-    background-color: var(--violet-7); /* Darker violet on hover */
-    transform: scale(1.05); /* Slight zoom effect on hover */
-}
 
 .dialog-title {
-    font-size: 24px;
+    font-size: 1.8rem;
+    margin-bottom: 15px; /* Added margin for spacing */
+    text-align: center; /* Center the title */
+    color: var(--violet-11);
 }
 
 .dialog-close {
-    background-color: red; /* Changed background color to red */
-    color: aliceblue;
-    width: 30%;
-    border-radius: 3px;
+    background-color: var(--black-alpha-9); /* Darker black for close button */
+    color: var(--mauve-1); /* Light text */
+    width: 100px; /* Set a fixed width */
+    padding: 8px; /* Padding for better button size */
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+.dialog-close:hover {
+    background-color: var(--black-alpha-10); /* Darker on hover */
+}
+@keyframes overlayShow {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
+@keyframes contentShow {
+	from {
+		opacity: 0;
+		transform: translate(-50%, -48%) scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+}
