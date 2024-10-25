@@ -12,7 +12,8 @@ CREATE TABLE "Devis" (
     "codePostall" INTEGER NOT NULL,
     "message" TEXT NOT NULL,
     "etage" TEXT NOT NULL,
-    "status" "Status" NOT NULL,
+    "surfaceId" INTEGER,
+    "status" "Status",
 
     CONSTRAINT "Devis_pkey" PRIMARY KEY ("id")
 );
@@ -34,7 +35,6 @@ CREATE TABLE "facture" (
 CREATE TABLE "Surface" (
     "id" SERIAL NOT NULL,
     "valeur" TEXT NOT NULL,
-    "DevisId" INTEGER,
 
     CONSTRAINT "Surface_pkey" PRIMARY KEY ("id")
 );
@@ -43,7 +43,7 @@ CREATE TABLE "Surface" (
 CREATE UNIQUE INDEX "facture_DevisId_key" ON "facture"("DevisId");
 
 -- AddForeignKey
-ALTER TABLE "facture" ADD CONSTRAINT "facture_DevisId_fkey" FOREIGN KEY ("DevisId") REFERENCES "Devis"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Devis" ADD CONSTRAINT "Devis_surfaceId_fkey" FOREIGN KEY ("surfaceId") REFERENCES "Surface"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Surface" ADD CONSTRAINT "Surface_DevisId_fkey" FOREIGN KEY ("DevisId") REFERENCES "Devis"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "facture" ADD CONSTRAINT "facture_DevisId_fkey" FOREIGN KEY ("DevisId") REFERENCES "Devis"("id") ON DELETE CASCADE ON UPDATE CASCADE;

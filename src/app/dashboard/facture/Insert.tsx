@@ -17,7 +17,9 @@ function Insert() {
         DevisId: 0,
     });
     const {devis,refetchFacture}=useContext(DataContext)
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    ) => {
         const { name, value } = e.target;
         setFormData({
             ...formData,
