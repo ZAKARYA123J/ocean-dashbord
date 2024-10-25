@@ -9,7 +9,7 @@ import { TbCirclesRelation } from "react-icons/tb";
 import { RiBankCardLine } from "react-icons/ri";
 import { MdOutlineWidthFull } from "react-icons/md";
 export const routes = [
-  { routeName: "Analytics", path: "/dashboard", icon: <ImStatsDots /> },
+  // { routeName: "Analytics", path: "/dashboard", icon: <ImStatsDots /> },
   // { routeName: "Users", path: "/dashboard/users", icon: <FaRegUser /> },
   
   {
