@@ -6,6 +6,8 @@ CREATE TABLE "Devis" (
     "id" SERIAL NOT NULL,
     "nameEntreprise" TEXT,
     "namePersone" TEXT NOT NULL,
+    "numberPhon" TEXT,
+    "ville" TEXT,
     "email" TEXT NOT NULL,
     "VotreFonction" TEXT,
     "Adress" TEXT NOT NULL,
