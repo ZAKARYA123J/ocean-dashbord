@@ -34,11 +34,11 @@ const Insert: React.FC = () => {
 const {surface,refetchDevis}=useContext(DataContext)
   const [submitStatus, setSubmitStatus] = useState<string>(""); // To track submission status
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-
-    // Handle number inputs
-    if (name === "codePostall" || name === "surfaceId") {
+  
+    // Handle number inputs specifically for <input> elements
+    if ((name === "codePostall" || name === "surfaceId") && e.target instanceof HTMLInputElement) {
       setFormData({
         ...formData,
         [name]: parseInt(value) || 0, // Convert to number, fallback to 0 if NaN
@@ -50,6 +50,7 @@ const {surface,refetchDevis}=useContext(DataContext)
       });
     }
   };
+  
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // Prevent default form submission
