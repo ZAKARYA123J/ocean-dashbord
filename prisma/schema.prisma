@@ -11,6 +11,8 @@ model Devis {
   id               Int          @id @default(autoincrement())
   nameEntreprise   String?
   namePersone      String
+  numberPhon       Int
+  ville            String
   email            String
   VotreFonction    String?
   Adress           String

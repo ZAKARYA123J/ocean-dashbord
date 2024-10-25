@@ -19,6 +19,8 @@ export async function POST(req) {
       etage,
       surfaceId, 
       status,  
+      numberPhon,     
+      ville            
     } = body;
 
     if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status) {
@@ -37,6 +39,8 @@ export async function POST(req) {
         etage,
         surfaceId, 
         status,
+        numberPhon,
+        ville
       },
     });
 
