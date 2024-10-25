@@ -3,11 +3,16 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+function setCorsHeaders(response) {
+  response.headers.set('Access-Control-Allow-Origin', '*'); // Replace '*' with a specific domain in production
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  return response;
+}
+
 export async function POST(req) {
   try {
     const body = await req.json();
-    console.log('Received body:', body); // Log the received body
-
     const {
       nameEntreprise,
       namePersone,
@@ -17,14 +22,16 @@ export async function POST(req) {
       codePostall,
       message,
       etage,
-      surfaceId, 
-      status,  
-      numberPhon,     
-      ville            
+      surfaceId,
+      status,
+      numberPhon,
+      ville
     } = body;
 
     if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status) {
-      return NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 });
+      return setCorsHeaders(
+        NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 })
+      );
     }
 
     const newDevis = await prisma.devis.create({
@@ -37,31 +44,41 @@ export async function POST(req) {
         codePostall,
         message,
         etage,
-        surfaceId, 
+        surfaceId,
         status,
         numberPhon,
         ville
       },
     });
 
-    return NextResponse.json(newDevis, { status: 201 });
+    return setCorsHeaders(NextResponse.json(newDevis, { status: 201 }));
   } catch (error) {
-    console.error('Error creating Devis:', error); // Log the error
-    return NextResponse.json({ error: 'Failed to create Devis', details: error.message }, { status: 500 });
+    console.error('Error creating Devis:', error);
+    return setCorsHeaders(
+      NextResponse.json({ error: 'Failed to create Devis', details: error.message }, { status: 500 })
+    );
   }
 }
+
 export async function GET() {
   try {
     const devis = await prisma.devis.findMany({
       include: {
-        surface: true,  
-        Facture: true,  
+        surface: true,
+        Facture: true,
       },
     });
 
-    return NextResponse.json(devis, { status: 200 });
+    return setCorsHeaders(NextResponse.json(devis, { status: 200 }));
   } catch (error) {
-    console.error('Error fetching Devis:', error); // Log the error
-    return NextResponse.json({ error: 'Failed to fetch Devis', details: error.message }, { status: 500 });
+    console.error('Error fetching Devis:', error);
+    return setCorsHeaders(
+      NextResponse.json({ error: 'Failed to fetch Devis', details: error.message }, { status: 500 })
+    );
   }
+}
+
+export function OPTIONS() {
+  // Handle preflight requests for CORS
+  return setCorsHeaders(NextResponse.json({}, { status: 204 }));
 }
