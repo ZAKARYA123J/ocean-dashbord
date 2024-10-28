@@ -28,12 +28,14 @@ export async function POST(req) {
       ville
     } = body;
 
+    // Validate required fields
     if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status) {
       return setCorsHeaders(
         NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 })
       );
     }
 
+    // Create a new Devis entry in the database
     const newDevis = await prisma.devis.create({
       data: {
         nameEntreprise,
