@@ -80,7 +80,7 @@ export async function GET() {
   }
 }
 
+
 export function OPTIONS() {
-  // Handle preflight requests for CORS
-  return setCorsHeaders(NextResponse.json({}, { status: 204 }));
+  return setCorsHeaders(new NextResponse(null, { status: 204 }));
 }
