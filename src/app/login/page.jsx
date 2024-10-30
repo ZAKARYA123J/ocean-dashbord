@@ -65,7 +65,7 @@ function LoginPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const router = useRouter();
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     const validEmail = 'test@example.com';
     const validPassword = 'password123';
