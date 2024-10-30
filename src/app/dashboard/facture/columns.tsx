@@ -1,67 +1,102 @@
-"use client"
-import React, { useEffect, useState,useContext } from 'react';
-import './Table.css'; // Import the CSS file
+"use client";
+import React, { useEffect, useState, useContext } from 'react';
 import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import { DataContext } from '@/app/contexts/post';
 import { useRouter } from 'next/navigation';
+import styled from 'styled-components';
 
-// const { dateReaserver, dateFacture, price, DevisId } = await req.json();
-const Columns: React.FC = () => {
-  const [data, setData] = useState([]);
-  const {facture,refetchFacture}=useContext(DataContext)
-const router=useRouter()
+// Styled components
+const Table = styled.table`
+  width: 100%;
+  border-collapse: collapse;
+ 
+`;
 
-const handleUpdate=(id:string)=>(
-  router.push(`/dashboard/update-facture/${id}`)
-)
-  const handleDelete = async (id: string) => {
-    try{
-        await fetch(`/api/facture/${id}`, {
-      method: 'DELETE',
-    });
-    await refetchFacture()
-    }
-  catch{
-    console.log('error')
+const TableHeader = styled.thead`
+background-color: #f0f0f0;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ccc;
+  font-weight: bold; 
+`;
+
+const TableRow = styled.tr`
+  &:nth-child(even) {
+    background-color: #f2f2f2; /* Light grey for even rows */
   }
-    // Update the state to remove the deleted item
+`;
+
+const TableCell = styled.td`
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+ 
+`;
+
+const ActionsCell = styled(TableCell)`
+  display: flex;
+  gap: 8px; /* Spacing between icons */
+`;
+
+const IconButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #0070f3; /* Icon color */
+  width: 24px; // Set desired width
+  height: 24px; // Set desired height
+  &:hover {
+    color: #005bb5; /* Darker blue on hover */
+  }
+`;
+
+const Columns: React.FC = () => {
+  const { facture, refetchFacture } = useContext(DataContext);
+  const router = useRouter();
+
+  const handleUpdate = (id: string) => {
+    router.push(`/dashboard/update-facture/${id}`);
   };
 
+  const handleDelete = async (id: string) => {
+    try {
+      await fetch(`/api/facture/${id}`, {
+        method: 'DELETE',
+      });
+      await refetchFacture();
+    } catch {
+      console.log('Error deleting facture');
+    }
+  };
 
   return (
     <div className="overflow-x-auto">
-      <table className="table " style={{marginLeft:"110px"}}>
-        <thead>
+      <Table>
+        <TableHeader>
           <tr>
-            <th>id</th>
-            <th>dateReaserver</th>
-            <th>dateFacture</th>
-            <th>price</th>
-            <th>DevisId</th>
-            <th>Actions</th>
+            <TableCell>Date Réservé</TableCell>
+            <TableCell>Date Facture</TableCell>
+            <TableCell>Prix</TableCell>
+            <TableCell>Actions</TableCell>
           </tr>
-        </thead>
+        </TableHeader>
         <tbody>
           {facture.map((item:any) => (
-            <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.dateReaserver}</td>
-              <td>{item.dateFacture}</td>
-              <td>{item.price}</td>
-              <td>{item.DevisId}</td>
-              <td>
-              <button className="button button-update" onClick={()=>handleUpdate(item.id)}>
-                  <Pencil1Icon />
-                </button>
-    <button onClick={() => handleDelete(item.id)} className="button button-delete" >
-    <TrashIcon />
-    </button>
-</td>
-            </tr>
+            <TableRow key={item.id}>
+              <TableCell>{item.dateReaserver}</TableCell>
+              <TableCell>{item.dateFacture}</TableCell>
+              <TableCell>{item.price}</TableCell>
+              <ActionsCell>
+                <IconButton onClick={() => handleUpdate(item.id)}>
+                  <Pencil1Icon style={{width:" 24px",height: "24px"}}/>
+                </IconButton>
+                <IconButton onClick={() => handleDelete(item.id)}>
+                  <TrashIcon  style={{width:" 24px",height: "24px",color:"#ff0000"}}/>
+                </IconButton>
+              </ActionsCell>
+            </TableRow>
           ))}
         </tbody>
-      </table>
-    
+      </Table>
     </div>
   );
 };

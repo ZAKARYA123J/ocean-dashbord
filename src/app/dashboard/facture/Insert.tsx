@@ -1,13 +1,58 @@
 "use client";
-import React, { useState,useContext } from 'react';
-import './styles.css'; // Make sure to import your CSS file
+import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
 import { DataContext } from '@/app/contexts/post';
+
 interface FormData {
     dateReaserver: string;
     dateFacture: string;
     price: number;
     DevisId: number;
 }
+
+const FormContainer = styled.div`
+    padding: 20px;
+`;
+
+const StyledForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+`;
+
+const FormGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+`;
+
+const Label = styled.label`
+    font-weight: bold;
+`;
+
+const Input = styled.input`
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+`;
+
+const Select = styled.select`
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+`;
+
+const SubmitButton = styled.button`
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #218838;
+    }
+`;
 
 function Insert() {
     const [formData, setFormData] = useState<FormData>({
@@ -16,7 +61,8 @@ function Insert() {
         price: 0,
         DevisId: 0,
     });
-    const {devis,refetchFacture}=useContext(DataContext)
+    const { devis, refetchFacture } = useContext(DataContext);
+    
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
     ) => {
@@ -29,7 +75,7 @@ function Insert() {
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
+
         try {
             const response = await fetch('/api/facture', {
                 method: 'POST',
@@ -44,7 +90,7 @@ function Insert() {
             }
 
             const data = await response.json();
-            await refetchFacture()
+            await refetchFacture();
             console.log('Success:', data);
             // Optionally reset the form or show a success message here
         } catch (error) {
@@ -53,71 +99,67 @@ function Insert() {
     };
 
     return (
-        <div className="form-container">
-            <form onSubmit={handleSubmit} className="insert-form">
-                <div className="form-group">
-                    <label>
+        <FormContainer>
+            <StyledForm onSubmit={handleSubmit}>
+                <FormGroup>
+                    <Label>
                         Date Reserved:
-                        <input
+                        <Input
                             type="date"
                             name="dateReaserver"
                             value={formData.dateReaserver}
                             onChange={handleChange}
                             required
-                            className="form-input"
                         />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
+                    </Label>
+                </FormGroup>
+                <FormGroup>
+                    <Label>
                         Date Facture:
-                        <input
+                        <Input
                             type="date"
                             name="dateFacture"
                             value={formData.dateFacture}
                             onChange={handleChange}
                             required
-                            className="form-input"
                         />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
+                    </Label>
+                </FormGroup>
+                <FormGroup>
+                    <Label>
                         Price:
-                        <input
+                        <Input
                             type="number"
                             name="price"
                             value={formData.price}
                             onChange={handleChange}
                             required
-                            className="form-input"
                         />
-                    </label>
-                </div>
-                <div className="form-group">
-                    <label>
-                         Select Devis:
-                        <select
+                    </Label>
+                </FormGroup>
+                <FormGroup>
+                    <Label>
+                        Select Devis:
+                        <Select
                             name="DevisId"
                             value={formData.DevisId}
                             onChange={handleChange}
                             required
-                            className="form-input"
                         >
                             <option value="" disabled>Select Devis</option>
                             {devis
-                                .filter((item: { id: number, nameEntreprise: string, Facture: string }) => !item.Facture)
-                                .map((item:any) => (
+                                .filter((item: { id: number; nameEntreprise: string; Facture: string }) => !item.Facture)
+                                .map((item: any) => (
                                     <option key={item.id} value={item.id}>
                                         {item.nameEntreprise} (ID: {item.id})
                                     </option>
                                 ))}
-                        </select>
-                    </label>
-                </div>
-                <button type="submit" className="submit-button">Insert</button>
-            </form>
-        </div>
+                        </Select>
+                    </Label>
+                </FormGroup>
+                <SubmitButton type="submit">Insert</SubmitButton>
+            </StyledForm>
+        </FormContainer>
     );
 }
 

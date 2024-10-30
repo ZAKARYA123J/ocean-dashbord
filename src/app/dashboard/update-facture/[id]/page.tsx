@@ -2,7 +2,56 @@
 import React, { useState } from "react";
 import { useParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import './styles.css';
+import styled from "styled-components";
+
+// Define styled components
+const Container = styled.div`
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+`;
+
+const Title = styled.h2`
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const InputGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+`;
+
+const Input = styled.input`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+`;
+
+const Button = styled.button`
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #00bfff ;
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darkviolet;
+  }
+`;
+
+const SuccessMessage = styled.p`
+  color: green;
+  text-align: center;
+`;
 
 interface FormData {
   id: number; // Assuming each item has a unique ID
@@ -31,7 +80,7 @@ const UpdateForm = () => {
     const { name, value } = e.target;
 
     // Array of fields that should be treated as numbers
-    const numberFields = [ "id", "price", "DevisId"];
+    const numberFields = ["id", "price", "DevisId"];
 
     // Check if the input's name is in the numberFields array
     if (numberFields.includes(name)) {
@@ -62,48 +111,41 @@ const UpdateForm = () => {
   };
 
   return (
-    <div className="container">
-      <h2 className="h2">Update Information for ID: {id}</h2>
-      <form onSubmit={handleSubmit} className="form">
-        <div className="input-group">
-          <input
+    <Container>
+      <Title>Update Information for ID: {id}</Title>
+      {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
+      <Form onSubmit={handleSubmit}>
+        <InputGroup>
+          <Input
             type="date"
-            className="input"
             name="dateReaserver"
-            placeholder="Name of the Company"
             value={formData.dateReaserver || ""}
             onChange={handleChange}
           />
-          <input
+          <Input
             type="date"
-            className="input"
             name="dateFacture"
-            placeholder="Contact Person"
             value={formData.dateFacture || ""}
             onChange={handleChange}
           />
-        </div>
-        <input
+        </InputGroup>
+        <Input
           type="number"
-          className="input"
           name="price"
-          placeholder="price"
+          placeholder="Price"
           value={formData.price || ""}
           onChange={handleChange}
         />
-        <input
+        <Input
           type="number"
-          className="input"
           name="DevisId"
           placeholder="DevisId"
-          value={formData.DevisId }
+          value={formData.DevisId}
           onChange={handleChange}
         />
-        <button className="button" type="submit" style={{backgroundColor:'violet'}}>
-          Update
-        </button>
-      </form>
-    </div>
+        <Button type="submit">Update</Button>
+      </Form>
+    </Container>
   );
 };
 
