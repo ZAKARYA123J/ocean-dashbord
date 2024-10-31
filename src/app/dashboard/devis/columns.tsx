@@ -88,7 +88,9 @@ const Columns: React.FC = () => {
   const handleUpdate = (id: string) => {
     router.push(`/dashboard/update-devi/${id}`);
   };
-
+const handleDetaile=(id:string)=>{
+  router.push(`/dashboard/detaildevi/${id}`)
+}
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -116,7 +118,7 @@ const Columns: React.FC = () => {
                 <Button onClick={() => handleDelete(devi.id)}>
                   <TrashIcon  style={{width:" 24px",height: "24px",color:"#ff0000"}}/>
                 </Button>
-                <Button>
+                <Button onClick={()=>handleDetaile(devi.id)}>
                   <RiInformationFill  style={{width:" 24px",height: "24px",color:"#00bfff"}}/>
                 </Button>
               </TableCell>

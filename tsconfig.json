@@ -23,6 +23,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/surface/route.jsx", "src/app/api/Devis/route.jsx", "src/app/dashboard/devis/columns.tsx", "src/app/login/page.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/api/surface/route.jsx", "src/app/api/Devis/route.jsx", "src/app/dashboard/devis/columns.tsx", "src/app/login/page.jsx", "src/app/dashboard/detaildevi/[id]/page.jsx"],
   "exclude": ["node_modules"]
 }
