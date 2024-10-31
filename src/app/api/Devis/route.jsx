@@ -69,6 +69,9 @@ export async function GET() {
         surface: true,
         Facture: true,
       },
+      orderBy: {
+        id: 'desc',
+      },
     });
 
     return setCorsHeaders(NextResponse.json(devis, { status: 200 }));

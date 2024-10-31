@@ -32,6 +32,8 @@ export async function GET() {
     const factures = await prisma.facture.findMany({
       include: {
         Devis: true, 
+      },orderBy: {
+        id: 'desc',
       },
     });
     return NextResponse.json(factures, { status: 200 });
