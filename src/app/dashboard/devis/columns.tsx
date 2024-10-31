@@ -71,7 +71,7 @@ const ModalContent = styled.div`
 const Columns: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const { devis, loading, error, refetchDevis } = useContext(DataContext);
+  const { devis, loading, error, refetchDevis ,surface} = useContext(DataContext);
   const router = useRouter();
 
   const handleDelete = async (id: string) => {
@@ -84,7 +84,10 @@ const Columns: React.FC = () => {
       console.log('Error deleting the item');
     }
   };
-
+  useEffect(() => {
+    // Log the surface data to check if it's working
+    console.log('Surface data:', surface);
+  }, [surface]);
   const handleUpdate = (id: string) => {
     router.push(`/dashboard/update-devi/${id}`);
   };
@@ -126,7 +129,7 @@ const handleDetaile=(id:string)=>{
           ))}
         </tbody>
       </Table>
-
+    
       <Modal isOpen={isModalOpen}>
         <ModalContent>
           <h2>Confirmation</h2>

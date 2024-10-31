@@ -75,17 +75,17 @@ function Page() {
             <Label>Email:</Label>
             <Value>{data.email}</Value>
           </DataField>
-          <DataField>
+          {/* <DataField>
             <Label>Function:</Label>
             <Value>{data.VotreFonction}</Value>
-          </DataField>
+          </DataField> */}
           <DataField>
             <Label>Address:</Label>
             <Value>{data.Adress}</Value>
           </DataField>
           <DataField>
-            <Label>Postal Code:</Label>
-            <Value>{data.codePostall}</Value>
+            <Label>Numero Phone:</Label>
+            <Value>{data?.numberPhon}</Value>
           </DataField>
           <DataField>
             <Label>Message:</Label>

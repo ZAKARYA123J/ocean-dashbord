@@ -13,14 +13,16 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
+    <DataProvider>
     <div className="tw-flex tw-flex-col">
-      <DataProvider>
+      
       <DashboardNav />
       <div>
         <DashboardSidebar/>
         <main className="lg:tw-ml-[59px]">{children}</main>
       </div>
-      </DataProvider>
+    
     </div>
+    </DataProvider>
   );
 }

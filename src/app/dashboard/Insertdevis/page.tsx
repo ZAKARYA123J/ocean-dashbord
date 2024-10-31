@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useContext } from "react";
-import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon
+import { PlusIcon } from "@radix-ui/react-icons"; // Import the Plus icon
 import { DataContext } from "@/app/contexts/post";
 import styled from "styled-components";
-
+import { useRouter } from "next/navigation";
 // Define the shape of your form data
 interface FormData {
   nameEntreprise: string;
@@ -16,11 +16,13 @@ interface FormData {
   etage: string;
   surfaceId: number;
   status: string;
+  ville: string;
+  numberPhon: string;
 }
 
 // Styled Components
 const FormContainer = styled.div`
-  margin:60px;
+  margin: 60px;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
@@ -77,15 +79,17 @@ const Insert: React.FC = () => {
     nameEntreprise: "",
     namePersone: "",
     email: "",
-    VotreFonction: "",
+    VotreFonction: "ezez",
     Adress: "",
     codePostall: 80000,
+    ville: "",
     message: "",
     etage: "",
     surfaceId: 0,
     status: "",
+    numberPhon: ""
   });
-  
+const router=useRouter()
   const { surface, refetchDevis } = useContext(DataContext);
   const [submitStatus, setSubmitStatus] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -114,17 +118,20 @@ const Insert: React.FC = () => {
       if (response.ok) {
         console.log("Devi inserted successfully");
         setSubmitStatus("Devi inserted successfully!");
+        router.push('/dashboard/devis')
         setFormData({
           nameEntreprise: "",
           namePersone: "",
           email: "",
-          VotreFonction: "",
+          VotreFonction: "ezez",
           Adress: "",
           codePostall: 80000,
           message: "",
           etage: "",
           surfaceId: 0,
           status: "",
+          ville: "",
+          numberPhon: ""
         });
         await refetchDevis();
       } else {
@@ -150,6 +157,15 @@ const Insert: React.FC = () => {
           onChange={handleChange}
           required
         />
+        <StyledSelect name="surfaceId" onChange={handleChange} value={formData.surfaceId}>
+          <option value={0}>Select Surface</option>
+          {surface &&
+            surface.map((item: any) => (
+              <option key={item.id} value={item.id}>
+                {item.valeur}
+              </option>
+            ))}
+        </StyledSelect>
         <StyledInput
           type="text"
           name="namePersone"
@@ -168,14 +184,6 @@ const Insert: React.FC = () => {
         />
         <StyledInput
           type="text"
-          name="VotreFonction"
-          placeholder="Function"
-          value={formData.VotreFonction}
-          onChange={handleChange}
-          required
-        />
-        <StyledInput
-          type="text"
           name="Adress"
           placeholder="Address"
           value={formData.Adress}
@@ -183,11 +191,20 @@ const Insert: React.FC = () => {
           required
         />
         <StyledInput
-          type="number"
-          name="codePostall"
-          placeholder="Postal Code"
-          value={formData.codePostall}
+          type="text"
+          name="ville"
+          placeholder="City"
+          value={formData.ville}
           onChange={handleChange}
+          required
+        />
+        <StyledInput
+          type="text"
+          name="numberPhon"
+          placeholder="Phone Number"
+          value={formData.numberPhon}
+          onChange={handleChange}
+          required
         />
         <StyledInput
           type="text"
@@ -204,24 +221,27 @@ const Insert: React.FC = () => {
           value={formData.etage}
           onChange={handleChange}
         />
-        <StyledSelect name="surfaceId" onChange={handleChange} value={formData.surfaceId}>
-          <option value={0}>Select Surface</option>
-          {surface && surface.map((item:any) => (
-            <option key={item.id} value={item.id}>{item.name}</option>
-          ))}
+
+        {/* New status select input */}
+        <StyledSelect name="status" onChange={handleChange} value={formData.status} required>
+          <option value="">Select Status</option>
+          <option value="PENDING">PENDING</option>
+          <option value="CONFIRMED">CONFIRMED</option>
+          <option value="REJECTED">REJECTED</option>
+          <option value="COMPLETED">COMPLETED</option>
         </StyledSelect>
+
         <SubmitButton type="submit" disabled={isLoading}>
           {isLoading ? "Loading..." : <PlusIcon />}
           Submit
         </SubmitButton>
       </StyledForm>
-      {submitStatus && (
-        submitStatus.includes("successfully") ? (
+      {submitStatus &&
+        (submitStatus.includes("successfully") ? (
           <Message>{submitStatus}</Message>
         ) : (
           <ErrorMessage>{submitStatus}</ErrorMessage>
-        )
-      )}
+        ))}
     </FormContainer>
   );
 };

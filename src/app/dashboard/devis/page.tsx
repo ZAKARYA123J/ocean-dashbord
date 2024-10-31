@@ -29,8 +29,8 @@ const StyledButton = styled.button`
 
 export default function Integrations() {
   return (
-    <div className="tw-bg-stone-100 dark:tw-bg-slate-900">
-      <div className="tw-ml-5 tw-space-y-4">
+    <div >
+      <div>
         <Link href="/dashboard/Insertdevis">
           <StyledButton>
             Insert Devi <PlusIcon />
