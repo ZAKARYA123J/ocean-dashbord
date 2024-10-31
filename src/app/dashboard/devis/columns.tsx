@@ -1,14 +1,12 @@
-"use client";
 import React, { useEffect, useState, useContext } from 'react';
 import styled from 'styled-components';
 import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import { DataContext } from '@/app/contexts/post';
 import { useRouter } from 'next/navigation';
-import { IoIosInformationCircleOutline } from "react-icons/io";
 import { RiInformationFill } from "react-icons/ri";
+
 const Container = styled.div`
   padding: 20px;
-
 `;
 
 const Table = styled.table`
@@ -42,7 +40,7 @@ const Button = styled.button`
   transition: color 0.3s;
 
   &:hover {
-    color: #0070f3; /* Change to your preferred hover color */
+    color: #0070f3;
   }
 `;
 
@@ -71,29 +69,40 @@ const ModalContent = styled.div`
 const Columns: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
-  const { devis, loading, error, refetchDevis ,surface} = useContext(DataContext);
+  const { devis, loading, error, refetchDevis, surface } = useContext(DataContext);
   const router = useRouter();
 
-  const handleDelete = async (id: string) => {
+  const openDeleteModal = (id: string) => {
+    setSelectedId(id);
+    setIsModalOpen(true);
+  };
+
+  const handleDelete = async () => {
+    if (!selectedId) return;
+
     try {
-      await fetch(`/api/Devis/${id}`, {
+      await fetch(`/api/Devis/${selectedId}`, {
         method: 'DELETE',
       });
       await refetchDevis();
+      setSelectedId(null);
     } catch {
       console.log('Error deleting the item');
     }
   };
-  useEffect(() => {
-    // Log the surface data to check if it's working
-    console.log('Surface data:', surface);
-  }, [surface]);
+
   const handleUpdate = (id: string) => {
     router.push(`/dashboard/update-devi/${id}`);
   };
-const handleDetaile=(id:string)=>{
-  router.push(`/dashboard/detaildevi/${id}`)
-}
+
+  const handleDetail = (id: string) => {
+    router.push(`/dashboard/detaildevi/${id}`);
+  };
+
+  useEffect(() => {
+    console.log('Surface data:', surface);
+  }, [surface]);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
@@ -109,35 +118,36 @@ const handleDetaile=(id:string)=>{
           </tr>
         </thead>
         <tbody>
-          {devis.map((devi:any) => (
+          {devis.map((devi: any) => (
             <TableRow key={devi.id}>
               <TableCell>{devi.id}</TableCell>
               <TableCell>{devi.nameEntreprise}</TableCell>
               <TableCell>{devi.namePersone}</TableCell>
               <TableCell>
                 <Button onClick={() => handleUpdate(devi.id)}>
-                  <Pencil1Icon  style={{width:" 24px",height: "24px"}}/>
+                  <Pencil1Icon style={{ width: "24px", height: "24px" }} />
                 </Button>
-                <Button onClick={() => handleDelete(devi.id)}>
-                  <TrashIcon  style={{width:" 24px",height: "24px",color:"#ff0000"}}/>
+                <Button onClick={() => openDeleteModal(devi.id)}>
+                  <TrashIcon style={{ width: "24px", height: "24px", color: "#ff0000" }} />
                 </Button>
-                <Button onClick={()=>handleDetaile(devi.id)}>
-                  <RiInformationFill  style={{width:" 24px",height: "24px",color:"#00bfff"}}/>
+                <Button onClick={() => handleDetail(devi.id)}>
+                  <RiInformationFill style={{ width: "24px", height: "24px", color: "#00bfff" }} />
                 </Button>
               </TableCell>
             </TableRow>
           ))}
         </tbody>
       </Table>
-    
+
       <Modal isOpen={isModalOpen}>
         <ModalContent>
           <h2>Confirmation</h2>
           <p>Are you sure you want to delete this item?</p>
-          <Button onClick={() => setIsModalOpen(false)}>Cancel</Button>
-          <Button onClick={() => {
-            if (selectedId) handleDelete(selectedId);
+          <Button onClick={() => setIsModalOpen(false)} style={{  color: "#00bfff" }}>Cancel</Button>
+          <Button style={{ width: "24px", height: "24px", color: "#ff0000" }} onClick={() => {
+            handleDelete();
             setIsModalOpen(false);
+            
           }}>Confirm</Button>
         </ModalContent>
       </Modal>
