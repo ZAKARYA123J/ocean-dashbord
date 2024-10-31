@@ -31,11 +31,11 @@ export default function Integrations() {
   return (
     <div >
       <div>
-        <Link href="/dashboard/Insertdevis">
+        {/* <Link href="/dashboard/Insertdevis">
           <StyledButton>
             Insert Devi <PlusIcon />
           </StyledButton>
-        </Link>
+        </Link> */}
         <Columns />
       </div>
     </div>
