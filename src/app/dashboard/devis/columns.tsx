@@ -15,9 +15,10 @@ const Table = styled.table`
 `;
 
 const TableHeader = styled.th`
+  background-color: #f0f0f0;
   padding: 12px;
-  background-color: #f2f2f2;
   text-align: left;
+  border-bottom: 2px solid #ccc;
 `;
 
 const TableRow = styled.tr`

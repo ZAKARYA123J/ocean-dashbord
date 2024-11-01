@@ -1,28 +1,14 @@
 import React from 'react';
-import Insert from './Insert';
 import * as Dialog from '@radix-ui/react-dialog';
 import './styles.css'; // Ensure you have styles for the dialog
 import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon
 import Columns from './columns';
+import Link from 'next/link';
 function Page() {
     return (
       <>
-      
-        <div>
-            <Dialog.Root>
-                <Dialog.Trigger asChild>
-                    <button className="Button violet" style={{marginLeft:"110px"}}>Insert Facture<PlusIcon/></button>
-                </Dialog.Trigger>
-                <Dialog.Portal>
-                    <Dialog.Overlay className="dialog-overlay" />
-                    <Dialog.Content className="dialog-content">
-                        <Insert/>
-                        <Dialog.Close className="dialog-close">Close ✖</Dialog.Close> {/* Use an "X" symbol */}
-                    </Dialog.Content>
-                </Dialog.Portal>
-            </Dialog.Root>
-            
-        </div>
+      <Link href='/dashboard/insertfacture'>    
+                    <button className="Button violet" >Insert Facture<PlusIcon/></button></Link>
         <Columns/>
         </>
     );

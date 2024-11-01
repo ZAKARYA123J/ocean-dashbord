@@ -1,6 +1,5 @@
 "use client"
-// AuthContext.tsx
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 interface AuthContextType {
   token: string | null;
@@ -13,8 +12,23 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
 
-  const login = (newToken: string) => setToken(newToken);
-  const logout = () => setToken(null);
+  // Retrieve token from localStorage on initial load
+  useEffect(() => {
+    const storedToken = localStorage.getItem('authToken');
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, []);
+
+  const login = (newToken: string) => {
+    setToken(newToken);
+    localStorage.setItem('authToken', newToken); // Store token in localStorage
+  };
+
+  const logout = () => {
+    setToken(null);
+    localStorage.removeItem('authToken'); // Remove token from localStorage
+  };
 
   return (
     <AuthContext.Provider value={{ token, login, logout }}>
