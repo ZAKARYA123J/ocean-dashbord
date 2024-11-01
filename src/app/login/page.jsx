@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '../AuthContext';
 import styled from 'styled-components';
-
+console.log('dfd')
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
