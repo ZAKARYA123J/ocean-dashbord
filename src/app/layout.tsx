@@ -2,7 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import { NextThemeProvider } from "./providers";
-
+import { AuthProvider } from "./AuthContext";
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -18,7 +18,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={urbanist.className}>
       <body className="tw-bg-stone-100 dark:tw-bg-slate-900">
-        <NextThemeProvider>{children}</NextThemeProvider>
+        <NextThemeProvider>
+          <AuthProvider>
+          {children}
+          </AuthProvider>
+          </NextThemeProvider>
       </body>
     </html>
   );
