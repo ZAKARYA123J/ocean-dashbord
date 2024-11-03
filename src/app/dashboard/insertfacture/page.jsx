@@ -3,7 +3,6 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { DataContext } from '@/app/contexts/post';
 
-
 const FormContainer = styled.div`
     max-width: 500px;
     margin: 20px auto;
@@ -69,14 +68,20 @@ const SubmitButton = styled.button`
     }
 `;
 
+const Message = styled.p`
+    margin-top: 15px;
+    color: ${({ success }) => (success ? 'green' : 'red')};
+    font-size: 14px;
+`;
+
 function Insert() {
     const [formData, setFormData] = useState({
         dateReaserver: '',
         dateFacture: '',
-        price: 0,
-        DevisId: 0,
+        price: '',
+        DevisId: '', // Initialize as an empty string
     });
-    // dateReaserver, dateFacture, price, DevisId
+    const [message, setMessage] = useState(null); // State for success/error messages
     const { devis, refetchFacture } = useContext(DataContext);
     
     const handleChange = (e) => {
@@ -86,6 +91,7 @@ function Insert() {
             [name]: name === 'price' || name === 'DevisId' ? Number(value) : value,
         });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -99,15 +105,21 @@ function Insert() {
             });
 
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Failed to submit data');
             }
 
             const data = await response.json();
             await refetchFacture();
-            console.log('Success:', data);
-            // Optionally reset the form or show a success message here
+            setMessage({ text: 'Form submitted successfully!', success: true });
+            // Reset the form if needed
+            setFormData({
+                dateReaserver: '',
+                dateFacture: '',
+                price: '',
+                DevisId: '',
+            });
         } catch (error) {
-            console.error('Error:', error);
+            setMessage({ text: 'An error occurred. Please try again.', success: false });
         }
     };
 
@@ -172,6 +184,9 @@ function Insert() {
                 </FormGroup>
                 <SubmitButton type="submit">Insert</SubmitButton>
             </StyledForm>
+            {message && (
+                <Message success={message.success}>{message.text}</Message>
+            )}
         </FormContainer>
     );
 }

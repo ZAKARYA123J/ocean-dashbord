@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import styled from "styled-components";
 
 interface FormData {
@@ -13,18 +12,21 @@ interface FormData {
   Adress: string;
   codePostall: number;
   message: string;
+  ville: string;
   etage: string;
   surfaceId: number;
   status: string;
+  numberPhon: string;
 }
 
 const FormContainer = styled.div`
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #f9f9f9;
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 `;
 
 const FormTitle = styled.h2`
@@ -86,8 +88,7 @@ const ErrorMessage = styled.p`
 const UpdateForm = () => {
   const { id } = useParams();
   const router = useRouter();
-  
-  // State for form fields
+
   const [formData, setFormData] = useState<FormData>({
     id: Number(id),
     nameEntreprise: "",
@@ -97,18 +98,18 @@ const UpdateForm = () => {
     Adress: "",
     codePostall: 0,
     message: "",
+    ville: "",
     etage: "",
     surfaceId: 0,
     status: "",
+    numberPhon: "",
   });
-  
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
 
-    // Array of fields that should be treated as numbers
     const numberFields = ["codePostall", "id", "surfaceId"];
 
     if (numberFields.includes(name)) {
@@ -120,21 +121,21 @@ const UpdateForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     const res = await fetch(`/api/Devis/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
     });
-    
+
     if (res.ok) {
       setSuccessMessage("Form updated successfully!");
-      setErrorMessage(null); // Clear any previous error message
+      setErrorMessage(null);
       setTimeout(() => {
         router.push('/dashboard/devis');
       }, 2000);
     } else {
-      setSuccessMessage(null); // Clear any previous success message
+      setSuccessMessage(null);
       setErrorMessage("Update failed. Please try again.");
     }
   };
@@ -243,12 +244,34 @@ const UpdateForm = () => {
           />
         </FormField>
         <FormField>
+          <Label htmlFor="ville">City</Label>
+          <Input
+            type="text"
+            id="ville"
+            name="ville"
+            value={formData.ville}
+            onChange={handleChange}
+            required
+          />
+        </FormField>
+        <FormField>
           <Label htmlFor="status">Status</Label>
           <Input
             type="text"
             id="status"
             name="status"
             value={formData.status}
+            onChange={handleChange}
+            required
+          />
+        </FormField>
+        <FormField>
+          <Label htmlFor="numberPhon">Phone Number</Label>
+          <Input
+            type="text"
+            id="numberPhon"
+            name="numberPhon"
+            value={formData.numberPhon}
             onChange={handleChange}
             required
           />

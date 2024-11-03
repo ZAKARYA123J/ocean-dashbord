@@ -1,5 +1,5 @@
 "use client";
-import Insert from "./Insert";
+
 import Link from "next/link";
 import Columns from "./columns";
 import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon

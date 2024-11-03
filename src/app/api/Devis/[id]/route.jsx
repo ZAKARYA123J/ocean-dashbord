@@ -41,27 +41,42 @@ export async function PUT(req) {
       codePostall,
       message,
       etage,
+      numberPhon,
+      ville,
       surfaceId,
       status,
     } = await req.json();
-
+    // nameEntreprise,
+    // namePersone,
+    // email,
+    // VotreFonction,
+    // Adress,
+    // codePostall,
+    // message,
+    // etage,
+    // surfaceId,
+    // status,
+    // numberPhon,
+    // ville
     if (!id) {
       return NextResponse.json({ error: 'Devis ID is required' }, { status: 400 });
     }
 
     const updatedDevis = await prisma.devis.update({
       where: { id: Number(id) },
-      data: {
-        nameEntreprise,
-        namePersone,
-        email,
-        VotreFonction,
-        Adress,
-        codePostall,
-        message,
-        etage,
-        surfaceId,
-        status,
+      data: { 
+      nameEntreprise,
+      namePersone,
+      email,
+      VotreFonction,
+      Adress,
+      codePostall,
+      message,
+      etage,
+      numberPhon,
+      ville,
+      surfaceId,
+      status,
       },
     });
 

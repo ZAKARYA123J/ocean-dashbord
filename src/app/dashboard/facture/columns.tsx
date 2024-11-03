@@ -6,6 +6,9 @@ import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
 
 // Styled components
+const Container = styled.div`
+  padding: 20px;
+`;
 const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
@@ -69,7 +72,7 @@ const Columns: React.FC = () => {
   };
 
   return (
-    <div className="overflow-x-auto">
+   <Container>
       <Table>
         <TableHeader>
           <tr>
@@ -97,7 +100,7 @@ const Columns: React.FC = () => {
           ))}
         </tbody>
       </Table>
-    </div>
+      </Container>
   );
 };
 

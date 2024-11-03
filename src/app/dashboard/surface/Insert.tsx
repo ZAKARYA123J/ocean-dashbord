@@ -2,8 +2,30 @@
 import React, { useState,useContext } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import "./styles.css";
-import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon
+  import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon
 import { DataContext } from "@/app/contexts/post";
+import styled from "styled-components";
+const StyledButton = styled.button`
+  background-color: #00bfff; /* Blue background */
+  color: white;              /* White text */
+  margin:10px;
+  padding: 10px 20px;       /* Padding */
+  border: none;             /* No border */
+  border-radius: 5px;       /* Rounded corners */
+  cursor: pointer;           /* Pointer cursor on hover */
+  display: inline-flex;      /* Use inline-flex for inline behavior */
+  align-items: center;       /* Center items vertically */
+  gap: 8px;                  /* Space between text and icon */
+  
+  &:hover {
+    background-color: #6495ed; /* Darker green on hover */
+  }
+
+  &:focus {
+    outline: none;              /* Remove outline */
+    box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Shadow on focus */
+  }
+`;
 // Define the shape of your form data
 interface FormData {
     valeur: string;
@@ -61,7 +83,7 @@ const Insert: React.FC = () => {
     <div className="tw-mt-3">
     <Dialog.Root >
       <Dialog.Trigger asChild>
-        <button className="Button violet">Insert Surface <PlusIcon/></button>
+        <StyledButton>Insert Surface <PlusIcon/></StyledButton>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />

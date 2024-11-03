@@ -4,6 +4,7 @@ import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import { DataContext } from '@/app/contexts/post';
 import { useRouter } from 'next/navigation';
 import { RiInformationFill } from "react-icons/ri";
+import { PlusIcon } from '@radix-ui/react-icons'; // Import the Plus icon
 import Link from "next/link";
 const Container = styled.div`
   padding: 20px;
@@ -131,7 +132,7 @@ const Columns: React.FC = () => {
     <>
      <Link href="/dashboard/Insertdevis">
           <StyledButton>
-            Insert Devi 
+            Insert Devi <PlusIcon/>
           </StyledButton>
         </Link>
     <Container>
