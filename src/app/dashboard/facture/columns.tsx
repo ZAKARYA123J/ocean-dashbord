@@ -4,7 +4,7 @@ import { Pencil1Icon, TrashIcon } from '@radix-ui/react-icons';
 import { DataContext } from '@/app/contexts/post';
 import { useRouter } from 'next/navigation';
 import styled from 'styled-components';
-
+import { RiInformationFill } from "react-icons/ri";
 // Styled components
 const Container = styled.div`
   padding: 20px;
@@ -44,7 +44,7 @@ const IconButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: #0070f3; /* Icon color */
+   /* Icon color */
   width: 24px; // Set desired width
   height: 24px; // Set desired height
   &:hover {
@@ -70,7 +70,9 @@ const Columns: React.FC = () => {
       console.log('Error deleting facture');
     }
   };
-
+const handledetail=(id:string)=>{
+    router.push(`/dashboard/detailfacture/${id}`)
+}
   return (
    <Container>
       <Table>
@@ -87,13 +89,16 @@ const Columns: React.FC = () => {
             <TableRow key={item.id}>
               <TableCell>{item.dateReaserver}</TableCell>
               <TableCell>{item.dateFacture}</TableCell>
-              <TableCell>{item.price}</TableCell>
+              <TableCell>{item.price}DH</TableCell>
               <ActionsCell>
                 <IconButton onClick={() => handleUpdate(item.id)}>
                   <Pencil1Icon style={{width:" 24px",height: "24px"}}/>
                 </IconButton>
                 <IconButton onClick={() => handleDelete(item.id)}>
                   <TrashIcon  style={{width:" 24px",height: "24px",color:"#ff0000"}}/>
+                </IconButton>
+                <IconButton onClick={()=>handledetail(item.id)}>
+                  <RiInformationFill style={{ width: "24px", height: "24px", color: "#00bfff" }} />
                 </IconButton>
               </ActionsCell>
             </TableRow>
