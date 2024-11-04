@@ -1,8 +1,8 @@
 "use client";
-import React, { useState } from "react";
-import { useParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import React, { useState, useContext } from "react";
+import { useParams, useRouter } from "next/navigation";
 import styled from "styled-components";
+import { DataContext } from "@/app/contexts/post";
 
 // Define styled components
 const Container = styled.div`
@@ -39,11 +39,9 @@ const Button = styled.button`
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #00bfff ;
+  background-color: #00bfff;
   color: white;
   cursor: pointer;
-
- 
 `;
 
 const SuccessMessage = styled.p`
@@ -52,40 +50,44 @@ const SuccessMessage = styled.p`
 `;
 
 interface FormData {
-  id: number; // Assuming each item has a unique ID
+  id: number;
   dateReaserver: string;
   dateFacture: string;
   price: number;
   DevisId: number;
 }
-
+const Select = styled.select`
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+`;
 const UpdateForm = () => {
   const { id } = useParams();
   const router = useRouter();
+  const { facture ,devis} = useContext(DataContext);
+  const selectedfacture = facture.find((item: any) => item.id === Number(id));
 
-  // State for form fields
+  // Helper function to format dates
+  const formatDate = (date: string | Date | undefined) =>
+    date ? new Date(date).toISOString().split("T")[0] : "";
+
   const [formData, setFormData] = useState<FormData>({
     id: Number(id),
-    dateReaserver: "",
-    dateFacture: "",
-    price: 0,
-    DevisId: 0, // Set initial value for DevisId as 0
+    dateReaserver: formatDate(selectedfacture?.dateReaserver),
+    dateFacture: formatDate(selectedfacture?.dateFacture),
+    price: selectedfacture?.price || 0,
+    DevisId: 0,
   });
 
-  const [successMessage, setSuccessMessage] = useState<string | null>(null); // State for success message
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-
-    // Array of fields that should be treated as numbers
-    const numberFields = ["id", "price", "DevisId"];
-
-    // Check if the input's name is in the numberFields array
-    if (numberFields.includes(name)) {
-      setFormData({ ...formData, [name]: Number(value) });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData({
+      ...formData,
+      [name]: name === "price" || name === "DevisId" ? Number(value) : value,
+    });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -98,13 +100,13 @@ const UpdateForm = () => {
     });
 
     if (res.ok) {
-      setSuccessMessage("Form updated successfully!"); // Set success message
+      setSuccessMessage("Form updated successfully!");
       setTimeout(() => {
-        router.push("/dashboard/facture"); // Redirect after a short delay
-      }, 2000); // Redirect after 2 seconds (2000 milliseconds)
+        router.push("/dashboard/facture");
+      }, 2000);
     } else {
       console.error("Update failed");
-      setSuccessMessage("Update failed. Please try again."); // Set error message if needed
+      setSuccessMessage("Update failed. Please try again.");
     }
   };
 
@@ -134,13 +136,18 @@ const UpdateForm = () => {
           value={formData.price || ""}
           onChange={handleChange}
         />
-        <Input
-          type="number"
+        <Select
           name="DevisId"
-          placeholder="DevisId"
           value={formData.DevisId}
           onChange={handleChange}
-        />
+        >
+          <option value="">Select Devis</option>
+          {devis.map((devisItem: any) => (
+            <option key={devisItem.id} value={devisItem.id}>
+              {devisItem.id} {devisItem.nameEntreprise}{/* Adjust `name` to match your data */}
+            </option>
+          ))}
+        </Select>
         <Button type="submit">Update</Button>
       </Form>
     </Container>
