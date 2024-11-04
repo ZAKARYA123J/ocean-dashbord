@@ -88,7 +88,7 @@ const Insert: React.FC = () => {
       <Dialog.Portal>
         <Dialog.Overlay className="DialogOverlay" />
         <Dialog.Content className="DialogContent">
-          <Dialog.Title className="DialogTitle">Insert Devi</Dialog.Title>
+          <Dialog.Title className="DialogTitle">Insert Surface</Dialog.Title>
           <Dialog.Description className="DialogDescription">
             Fill out the details below and click save to submit your Surface.
           </Dialog.Description>

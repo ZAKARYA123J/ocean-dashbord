@@ -224,17 +224,6 @@ const UpdateForm = () => {
             </FormField>
           </FlexContainer>
 
-          <FormField>
-            <Label htmlFor="VotreFonction">Your Function</Label>
-            <Input
-              type="text"
-              id="VotreFonction"
-              name="VotreFonction"
-              value={formData.VotreFonction}
-              onChange={handleChange}
-              required
-            />
-          </FormField>
 
           <FlexContainer>
             <FormField>
