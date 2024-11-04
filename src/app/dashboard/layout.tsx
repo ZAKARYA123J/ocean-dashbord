@@ -4,9 +4,6 @@ import type { Metadata } from "next";
 import { DashboardSidebar } from "@/app/dashboard/components/sidebar";
 import { DataProvider } from '../contexts/post';
 import useAuthCheck from "../useAuthCheck";
-
-
-
 export default function DashboardLayout({
   children,
 }: {

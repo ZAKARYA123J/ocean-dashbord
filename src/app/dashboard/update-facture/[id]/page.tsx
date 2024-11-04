@@ -43,9 +43,7 @@ const Button = styled.button`
   color: white;
   cursor: pointer;
 
-  &:hover {
-    background-color: darkviolet;
-  }
+ 
 `;
 
 const SuccessMessage = styled.p`
@@ -112,7 +110,7 @@ const UpdateForm = () => {
 
   return (
     <Container>
-      <Title>Update Information for ID: {id}</Title>
+      <Title>Update Information for facture: {id}</Title>
       {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
       <Form onSubmit={handleSubmit}>
         <InputGroup>

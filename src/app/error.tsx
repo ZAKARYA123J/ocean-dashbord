@@ -19,7 +19,7 @@ export default function Error({
   return (
     <div className="tw-grid tw-h-screen tw-place-items-center tw-bg-radial-gradient  tw-from-slate-100  tw-to-slate-300 dark:tw-from-slate-700 dark:tw-to-slate-900">
       <div className="tw-inline-flex tw-items-center tw-text-4xl dark:tw-text-slate-300">
-        Urbane <BiTerminal />{" "}
+      Ocean Connecting  <BiTerminal />{" "}
         <span className="tw-rounded tw-bg-red-300/80 tw-p-1  tw-text-[10px] tw-font-bold tw-leading-[10px] tw-text-red-900">
           DEV
         </span>

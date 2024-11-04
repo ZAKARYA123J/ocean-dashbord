@@ -16,20 +16,17 @@ const PageContainer = styled.div`
   max-width: 600px;
   margin: auto;
 `;
-
 // Define additional styles for displaying the data
 const Title = styled.h1`
   font-size: 24px;
   color: #333;
   margin-bottom: 20px;
 `;
-
 const Description = styled.p`
   font-size: 16px;
   color: #666;
   margin: 8px 0;
 `;
-
 // New styled component to display each data field with a label
 const DataField = styled.div`
   display: flex;
@@ -37,27 +34,22 @@ const DataField = styled.div`
   width: 100%;
   margin: 4px 0;
 `;
-
 const Label = styled.span`
   font-weight: bold;
   color: #333;
 `;
-
 const Value = styled.span`
   color: #666;
 `;
-
 function Page() {
   const { id } = useParams();
   const [data, setData] = useState(null);
-
   useEffect(() => {
     // Replace with your actual API endpoint
     axios.get(`/api/Devis/${id}`)
       .then(response => setData(response.data))
       .catch(error => console.error("Error fetching data:", error));
   }, [id]);
-
   return (
     <PageContainer>
       <Title>Details {id}</Title>
