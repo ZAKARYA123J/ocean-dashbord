@@ -26,7 +26,6 @@ export async function POST(req) {
     return NextResponse.json({ error: 'Failed to create facture', details: error.message }, { status: 500 });
   }
 }
-
 export async function GET() {
   try {
     const factures = await prisma.facture.findMany({

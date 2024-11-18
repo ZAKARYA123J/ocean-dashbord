@@ -8,10 +8,11 @@ datasource db {
 }
 
 model User {
-  id               Int          @id @default(autoincrement())
-  email String @unique
+  id       Int    @id @default(autoincrement())
+  email    String @unique
   password String
 }
+
 model Devis {
   id               Int          @id @default(autoincrement())
   nameEntreprise   String?
@@ -19,31 +20,44 @@ model Devis {
   numberPhon       String?
   ville            String?
   email            String
-  VotreFonction    String?
-  Adress           String
-  codePostall      Int
+  votreFonction    String?
+  address          String
+  codePostal       Int
   message          String
   etage            String
-  surfaceId        Int?           // Updated to Int to reference Surface's id
-  surface          Surface?       @relation(fields: [surfaceId], references: [id], onDelete: SetNull) // Handle relation
+  surfaceId        Int?          // Reference to Surface's ID
+  surface          Surface?      @relation(fields: [surfaceId], references: [id], onDelete: SetNull)
   status           Status?
-  Facture          facture?
+  facture          Facture?
+  clientId         Int           // Reference to Client
+  client           Client        @relation(fields: [clientId], references: [id], onDelete: Cascade)
 }
-model facture {
+
+model Client {
+  id          Int       @id @default(autoincrement())
+  nameClient  String
+  devis       Devis[]   // One-to-many relation: One client can have multiple Devis
+  factures    Facture[] // One-to-many relation: One client can have multiple Factures
+}
+
+model Facture {
   id            Int       @id @default(autoincrement())
-  dateReaserver DateTime
+  dateReserved  DateTime
   dateFacture   DateTime
+  factureN      String
   price         Float
-  DevisId       Int?      @unique
-  Devis         Devis?    @relation(fields: [DevisId], references: [id], onDelete: Cascade) // Handle relation
+  devisId       Int?      @unique // One-to-one relation with Devis
+  devis         Devis?    @relation(fields: [devisId], references: [id], onDelete: Cascade)
+  clientId      Int       // Reference to Client
+  client        Client     @relation(fields: [clientId], references: [id], onDelete: Cascade)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 }
 
 model Surface {
   id        Int       @id @default(autoincrement())
-  valeur    String 
-  Devis     Devis[]   // One-to-many relation: One surface can have multiple Devis entries
+  valeur    String
+  devis     Devis[]   // One-to-many relation: One surface can have multiple Devis entries
 }
 
 enum Status {

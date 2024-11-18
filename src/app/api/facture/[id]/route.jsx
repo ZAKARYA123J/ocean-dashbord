@@ -60,8 +60,6 @@ export async function PUT(req) {
     return NextResponse.json({ error: 'Failed to update Facture', details: error.message }, { status: 500 });
   }
 }
-
-
 export async function DELETE(req, { params }) {
   try {
     const { id } = params;

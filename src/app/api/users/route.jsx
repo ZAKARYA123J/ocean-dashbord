@@ -18,7 +18,6 @@ export async function POST(req) {
         password: hashedPassword,
       },
     });
-
     return NextResponse.json(user, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: 'Error creating user' }, { status: 400 });
