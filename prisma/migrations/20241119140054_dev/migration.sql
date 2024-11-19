@@ -16,7 +16,7 @@ CREATE TABLE "Devis" (
     "nameEntreprise" TEXT,
     "namePersone" TEXT NOT NULL,
     "numberPhon" TEXT,
-    "datecalendrier" TIMESTAMP(3) NOT NULL,
+    "datecalendrier" TIMESTAMP(3),
     "ville" TEXT,
     "email" TEXT NOT NULL,
     "VotreFonction" TEXT,
