@@ -17,7 +17,7 @@ model Devis {
   nameEntreprise   String?
   namePersone      String
   numberPhon       String?
-  datecalendrier   DateTime?
+  datecalendrier   String?
   ville            String?
   email            String
   VotreFonction    String?
