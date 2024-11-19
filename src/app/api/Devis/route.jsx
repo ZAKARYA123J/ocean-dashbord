@@ -25,11 +25,12 @@ export async function POST(req) {
       surfaceId,
       status,
       numberPhon,
-      ville
+      ville,
+      datecalendrier
     } = body;
 
     // Validate required fields
-    if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status) {
+    if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status || !datecalendrier) {
       return setCorsHeaders(
         NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 })
       );
@@ -49,7 +50,8 @@ export async function POST(req) {
         surfaceId,
         status,
         numberPhon,
-        ville
+        ville,
+        datecalendrier
       },
     });
 

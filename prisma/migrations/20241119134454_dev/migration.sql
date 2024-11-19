@@ -16,15 +16,18 @@ CREATE TABLE "Devis" (
     "nameEntreprise" TEXT,
     "namePersone" TEXT NOT NULL,
     "numberPhon" TEXT,
+    "datecalendrier" TIMESTAMP(3) NOT NULL,
     "ville" TEXT,
     "email" TEXT NOT NULL,
     "VotreFonction" TEXT,
     "Adress" TEXT NOT NULL,
-    "codePostall" INTEGER NOT NULL,
+    "codePostall" TEXT NOT NULL,
     "message" TEXT NOT NULL,
     "etage" TEXT NOT NULL,
     "surfaceId" INTEGER,
     "status" "Status",
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Devis_pkey" PRIMARY KEY ("id")
 );
@@ -49,6 +52,9 @@ CREATE TABLE "Surface" (
 
     CONSTRAINT "Surface_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "facture_DevisId_key" ON "facture"("DevisId");

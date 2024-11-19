@@ -45,6 +45,7 @@ export async function PUT(req) {
       ville,
       surfaceId,
       status,
+      datecalendrier
     } = await req.json();
     // nameEntreprise,
     // namePersone,
@@ -77,6 +78,7 @@ export async function PUT(req) {
       ville,
       surfaceId,
       status,
+      datecalendrier
       },
     });
 
