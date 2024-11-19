@@ -30,7 +30,7 @@ export async function POST(req) {
     } = body;
 
     // Validate required fields
-    if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status || !datecalendrier) {
+    if (!namePersone || !email || !Adress || !codePostall || !message || !etage || !status ) {
       return setCorsHeaders(
         NextResponse.json({ error: 'All required fields must be provided' }, { status: 400 })
       );
